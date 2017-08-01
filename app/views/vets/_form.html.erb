@@ -1,0 +1,80 @@
+<div class="container">
+	
+	<%= form_for @vet do |f| %>
+		<div class="row">
+			<div class="form-group">
+				<%= f.label :병원_이름 %>
+				<%= f.text_field :vtitle, id: "vtitle", prompt: "선택", class: "form-control" %>
+			</div>
+		</row>
+		
+		<div class="row">
+		    <div class="form-group">
+			    <%= f.label :주소 %>
+			    <%= f.text_field :postcode, class: "form-control postcodify_postcode5", placeholder: "주소를 검색해주세요", autofocus: true, value: "" %>
+			    <%= f.button "검색", id: "postcodify_search_button", type: "button" %><br />
+			    <%= f.text_field :address, class: "form-control postcodify_address", autofocus: true, value: "" %>
+			    <%= f.text_field :address_detail, class: "form-control postcodify_details", autofocus: true, value: "" %>
+		    </div>
+		</div>	
+
+		<div class="row">
+			<div class="form-group">
+    			<%= f.label :전화번호 %>
+				<%= f.text_field :telephone, placeholder: "전화번호를 입력해주세요", class: "form-control" %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+    			<%= f.label :홈페이지 %>
+				<%= f.text_field :homepage, placeholder: "홈페이지/블로그 주소를 입력해주세요", class: "form-control" %>
+			</div>
+		</div>				
+
+		<div class="row">
+			<div class="form-group">
+    			<%= f.label :병원_소개 %>
+				<%= f.text_area :description, rows: 5, placeholder: "병원을 소개해주세요", class: "form-control" %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.check_box :hour %> 24시간
+				</div>
+				<div class="form-group">
+					<%= f.check_box :hotel %> 호텔
+				</div>
+				<div class="form-group">
+					<%= f.check_box :beauty %> 미용
+				</div>
+				<div class="form-group">
+					<%= f.check_box :supply %> 용품 판매
+				</div>						
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<span class="btn btn-default btn-file">
+						<i class="fa fa-cloud-upload fa-lg"></i>사진 올리기
+						<%= file_field_tag "images[]", type: :file, multiple: true %>
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="photos"><%= render 'photos/list' %></div>
+
+		<div class="actions">
+			<%= f.submit "저장하기", class: "btn btn-primary" %>
+		</div>
+
+	<% end %>
+
+</div>
+
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-4">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Top navbar</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= gravatar_tag current_user.email, html: { class: "rounded-circle" }, size: 25 %>&nbsp;
+              <%= current_user.name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">진찰일지</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "dropdown-item", id: "sign-out" %>
+            </div>
+          </li>
+        <% else %>
+          <%= link_to "회원가입", new_user_registration_path, class: "nav-link", id: "sign-up" %>
+          <%= link_to "로그인", new_user_session_path, class: "nav-link", id: "sign-in" %>
+        <% end %>
+        
+        <li>
+          <a href="#" class="nav-link"><i class="fa fa-envelope-o"></i> 메세지 보내기</a>
+        </li>
+        
+        <li>
+          <a href="#" class="nav-link"><i class="fa fa-hospital-o"></i> 병원 등록하기</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>  
+</nav>

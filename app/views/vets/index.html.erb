@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "병원 관리", vets_path, class: "sidebar-link active" %></li>
+			<li class="sidebar-item"><%= link_to "예약 관리", vets_path, class: "sidebar-link" %></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Listings
+			</div>
+			<div class="panel-body">
+				
+				<% @vets.each do |vet| %>
+					<div class="row">
+						<div class="col-md-2">
+							<%= image_tag vet.photos[0].image.url(:thumb) if vet.photos.length > 0 %>
+						</div>		
+						<div class="col-md-7">
+							<h4><%= vet.vtitle %></h4>
+						</div>		
+						<div class="col-md-3 right">
+							<%= link_to "Update", edit_vet_path(vet), class: "btn btn-primary" %>
+						</div>		
+					</div>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
