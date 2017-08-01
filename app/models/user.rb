@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :birth_date, presence: true
   has_many :vets
-  
+  has_many :reviews
+  has_many :reservations
   
 end

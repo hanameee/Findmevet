@@ -1,0 +1,36 @@
+<% if @reviews.count == 0 %>
+  <div class="text-center">
+    <h4> 아직 리뷰가 없습니다. </h4>
+  </div>
+<% else %>
+
+  <% @reviews.order("id desc").each do |r| %>
+    <hr>
+    
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-11">
+        <div>
+          <strong><%= r.user.name %> <div id="stars_<%= r.id %>"></div> </strong>
+          <span class="pull-right">
+            <%= link_to "리뷰 삭제하기", [@vet, r], method: :delete, data: {confirm: "정말 삭제하시겠습니까?"} if current_user && current_user == r.user %>
+          </span>
+        </div>
+        
+        <div> <%= r.created_at.strftime("%v") %></div>
+        <div> <%= r.comment %></div>
+      </div>
+    </div>
+    
+    <script>
+      $('#stars_<%= r.id %>').raty({
+        path: '/assets',
+        readOnly: true,
+        score: <%= r.star %>
+      })
+    </script>
+
+  <% end %>
+<% end %>
+

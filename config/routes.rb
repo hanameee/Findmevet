@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :vets
   resources :photos
+  
+  resources :vets do
+    resources :reservations, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy]
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

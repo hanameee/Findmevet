@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  vet: 
+  reserved_date: 2017-08-01 09:43:10
+
+two:
+  user: 
+  vet: 
+  reserved_date: 2017-08-01 09:43:10

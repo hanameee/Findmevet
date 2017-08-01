@@ -43,6 +43,9 @@
 				<p><%= @vet.description %></p>
 			</div>
 		</div>
+		
+		<!-- Reservation Form -->
+		<%= render 'reservations/form' %>
 
 		<!-- Amenities -->
 		<div class="row">
@@ -104,6 +107,22 @@
 		<br>
 		<hr>
 
+		<!-- Reviews -->
+		
+		<div class="row">
+			<div class="col-md-12">
+				<h3> Reviews <span id="average_rating"></span> (<%= @reviews.count %>) </h3>
+				<div class="container">
+					<div>
+						<%= render 'reviews/form' if !@hasReview %>
+					</div>
+					<div>
+						<%= render 'reviews/list' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<!-- Google Map -->
 		<div class="row">
 			<div class="col-md-12">
@@ -133,3 +152,11 @@
 
 	</div>
 </div>
+
+ <script>
+		$('#average_rating').raty({
+			path: '/assets',
+	    readOnly: true,
+	    score: <%= @vet.average_rating %>
+	  })
+ </script>

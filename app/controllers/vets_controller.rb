@@ -8,6 +8,9 @@ class VetsController < ApplicationController
 
   def show
     @photos = @vet.photos
+    
+    @reviews = @vet.reviews
+    @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
   end
 
   def new

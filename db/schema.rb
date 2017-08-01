@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801022248) do
+ActiveRecord::Schema.define(version: 20170801094309) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "vet_id"
@@ -21,6 +21,28 @@ ActiveRecord::Schema.define(version: 20170801022248) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.index ["vet_id"], name: "index_photos_on_vet_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "vet_id"
+    t.datetime "reserved_date"
+    t.text     "symptom"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["vet_id"], name: "index_reservations_on_vet_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "star"
+    t.integer  "vet_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["vet_id"], name: "index_reviews_on_vet_id"
   end
 
   create_table "roles", force: :cascade do |t|
