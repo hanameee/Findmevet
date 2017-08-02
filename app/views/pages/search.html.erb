@@ -1,0 +1,10 @@
+<div class="inner">
+  <div class="row">
+    <div class="col">
+      <h1>병원명</h1>
+      <% @vets.each do |vet| %>
+        <p><%= link_to vet.vtitle, vet %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,14 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create, :destroy]
     resources :reviews, only: [:create, :destroy]
   end
-
+  
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
+  
   devise_for :users
+  
+  get '/search' => 'pages#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

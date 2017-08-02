@@ -1,0 +1,6 @@
+<%= form_tag('/search', method: :get) do %>
+  <%= text_field_tag(:q, nil) %>
+  <%= button_tag('찾기', type: 'submit') %>
+<% end %>
+
+
