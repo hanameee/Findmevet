@@ -1,5 +1,5 @@
-<%= form_tag('/search', method: :get) do %>
-  <%= text_field_tag(:q, nil) %>
+<%= form_tag('/search', remote: true, method: :get) do %>
+  <%= text_field_tag(:q, nil, data: { behavior: 'autocomplete' }) %>
   <%= button_tag('찾기', type: 'submit') %>
 <% end %>
 

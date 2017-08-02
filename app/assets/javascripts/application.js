@@ -16,8 +16,7 @@
 //= require toastr
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.easy-autocomplete
 //= require turbolinks
 //= require_tree .
-
-/* global $ */
-$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+//= require_self
