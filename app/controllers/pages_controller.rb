@@ -6,9 +6,8 @@ class PagesController < ApplicationController
   
   def search
     @vets = Vet.ransack(vtitle_cont: params[:q]).result(distinct: true)
-    
     respond_to do |format|
-      format.html{}
+      format.html {}
       format.json {
         @vets = @vets.limit(5)
       }

@@ -7,9 +7,9 @@ class Vet < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   
-  validates :address, presence: true
-  validates :telephone, presence: true
-  validates :description, presence: true
+  validates :address, presence: false
+  validates :telephone, presence: false
+  validates :description, presence: false
   
   
   def average_rating

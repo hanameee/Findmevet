@@ -1,7 +1,6 @@
 class VetsController < ApplicationController
   before_action :set_vet, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show]
-  
   def index
     @vets = current_user.vets
   end
@@ -37,7 +36,7 @@ class VetsController < ApplicationController
     if current_user.id == @vet.user.id
       @photo = @vet.photos
     else
-      redirect_to root_path, notice: "you don't haver permission"
+      redirect_to root_path, notice: "you don't have permission"
     end
   end
 

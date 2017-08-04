@@ -1,6 +1,6 @@
 require 'csv'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'vet_0730.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'vet_0803.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
 csv.each do |row|
   t = Vet.new

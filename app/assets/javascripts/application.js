@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require tether
+//= require jquery_ujs
+//= require jquery-ui
 //= require toastr
 //= require bootstrap-sprockets
-//= require jquery_ujs
 //= require jquery.easy-autocomplete
 //= require turbolinks
 //= require_tree .
-//= require_self

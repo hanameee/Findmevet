@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 20170802013542) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
-    t.integer  "star"
+    t.integer  "star",       default: 1
     t.integer  "vet_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["vet_id"], name: "index_reviews_on_vet_id"
   end

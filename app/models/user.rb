@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :vets
   has_many :reviews
   has_many :reservations
+
   
   def self.new_with_session(params, session)
     super.tap do |user|

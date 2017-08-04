@@ -85,5 +85,3 @@ gem 'gravatarify'
 # 위경도 변환
 gem 'geocoder'
 
-# 실시간 참조 DB
-gem 'redis'
