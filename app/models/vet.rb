@@ -24,6 +24,17 @@ class Vet < ApplicationRecord
     reviews.count == 0 ? 0 : reviews.average(:star).round(2)
   end
 
+  # def update_average
+  #   @value = 0
+  #   self.reviews.star.each do |star|
+  #     @value = @value + star.value
+  #   end
+  #   @total = self.reviews.star.size
+
+
+  #   update_attributes(average: @value.to_f / @total.to_f)
+  # end
+
   private
 
     # Validates the size of an uploaded picture.

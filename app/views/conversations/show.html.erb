@@ -1,5 +1,6 @@
 <div id="conversation-wrap">
 <div class="row"> <!-- showcontainer 6:6 row -->
+
   <div class="col-xl-4 col-md-4" id="showleft">
     <div class= "showhospitaltext">
       <div class= "hospitaltitle">
@@ -127,8 +128,7 @@
 						</div>
 				<div>
 				  <div class="panel-heading">누구에게 메세지를 보내시겠어요?</div>
-				</div>
-						
+				  <div class="panel-body">
 						<% @users.each do |user| %>
 							<% if user.vets.count > 0 %>
 							  <div class="convlist">
