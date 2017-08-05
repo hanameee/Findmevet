@@ -5,14 +5,13 @@ class UsersController < ApplicationController
     @reviews = current_user.reviews
   end
   
+  def update
+    current_user.update
+
+  end
   
   def edit
   end
-  
-
-  
-
-  
   
   private
   

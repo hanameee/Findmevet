@@ -1,147 +1,214 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		
+<!-- 기본구조 
+
+1. carousel 
+
+2. showcontainer
+
+ 2-1 showleft
+  2-1-1 showhospitaltext
+   2-1-1-1 hospitaltitle
+   2-1-1-2 hospitalinfo
+  2-1-2 showmap
+
+ 2-2 showright
+  2-2-1 reviewfilters
+  2-2-2 reviewlist
+
+-->
+
+
+
 		<!-- Image -->
-		<div class="row">
-			<div class="col-md-12">
-				<%= image_tag @vet.picture.url if @vet.picture? %>
-			</div>
-		</div>
+	
 
-		<br>
 
-		<!-- Main Info -->
-		<div class="row">
-			<div class="col-md-8">
-				<div class="row">
-					<div class="col-md-3 text-center">
-					</div>
+  <div class="casousel" id="head">
+    <%= render 'shared/carousel-show' %>
+  </div> <!--carousel 끝--> 
+    
+  <div class="showcontainer">
+ 
+   <div class="row"> <!-- showcontainer 6:6 row -->
+   
+    <div class="col-xl-6 col-md-6" id="showleft">
+       <div class= "showhospitaltext">
+   
+              <div class= "hospitaltitle">
+                <div class="vettitle"><%= @vet.vtitle %></div>  
+                <!--<span class= "score"> 3.5 </span>-->
+                <div class="reservation_link">
+                 
+                 <div class="addreservation" data-toggle="modal" 
+                 data-target="#addreservationModal">예약
+                 </div>
+                 
+                 <%= link_to '채팅', conversation_path, class: 'chatting' %>
+                 
+                </div>
 
-					<div class="col-md-9">
-						<h4><%= @vet.vtitle %></h4>
-						<%= @vet.address %>
-
-						<div class="row text-center row-space-1">
-							<div class="col-sm-3">
-								<i class="fa fa-home fa-2x"></i>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<!-- Reservation form -->	
-			</div>
-		</div>
-
-		<!-- About -->
-		<div class="row">
-			<div class="col-md-12">
-				<h2>병원 소개</h2>
-				<p><%= @vet.description %></p>
-			</div>
-		</div>
-		
-		<!-- Reservation Form -->
-		<%= render 'reservations/form' %>
-
-		<!-- Amenities -->
-		<div class="row">
-			<div class="col-md-2">
-				<p>추가 정보</p>
-			</div>
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-6">
-						<ul class="amenities">
-												<td>
-						<% if current_user.is_like?(@vet) %>
-								<%= link_to vet_like_path(@vet), method: :post do %>
-								<i class="fa fa-heart fa-lg" aria-hidden="true"></i>
-							<% end %>
-						<% else %>
-							<%= link_to vet_like_path(@vet), method: :post do %>
-								<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-							<% end %>
+            <% if current_user %>   
+  						<% if current_user.is_like?(@vet) %>
+  								<%= link_to vet_like_path(@vet), method: :post do %>
+  								<i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+  							<% end %>
+  						<% else %>
+  							<%= link_to vet_like_path(@vet), method: :post do %>
+  								<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+  							<% end %>
+  						<% end %>
+  					<% else %>
+  					  <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
 						<% end %>
-					</td>
-							<td><%= @vet.likes.size %></td>
-							<li class="<%= 'text-line-through' if !@vet.hotel %>">호텔</li>
-							<li class="<%= 'text-line-through' if !@vet.supply %>">용품 판매</li>
-							<li class="<%= 'text-line-through' if !@vet.hour %>">24시간 진료</li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<li class="<%= 'text-line-through' if !@vet.beauty %>">미용</li>
-					</div>
-				</div>
-			</div>
-		</div>
+	
+							<div class="follownumber"><%= @vet.likes.size %></div>
+           
+              </div><!-- hospitaltitle 끝 -->
+              
+              <div class= "hospitalinfo">
+                <div class= "row"> <!-- hospitalinfo row 6:6 ... infolist, pricelist  -->
+                 <div class= "col-xl-6 col-md-6 infolist">
+                  <div class="indexline"> 
+                    <div class= "basicinfohead">기본정보</div>
+                  </div>  <!-- indexline 끝 -->
+                  <div class="indexline">
+                     <div class= "row">
+                       <div class= "col-4 indexicon">
+                          <div class= "icon">병원주소</div>
+                       </div>
+                       <div class= "col-8 indexicontext">
+                          <div class = "address"><%= @vet.address %></div>
+                       </div>
+                     </div> <!-- row 끝 -->
+                    </div>  <!-- indexline 끝 -->
+                  <div class="indexline">
+                     <div class= "row">
+                       <div class= "col-4 indexicon">
+                          <div class= "icon">병원전화</div>
+                       </div>
+                       <div class= "col-8 indexicontext">
+                          <div class = "telephone"><%= @vet.telephone %></div>
+                       </div>
+                     </div> <!-- row 끝 -->
+                    </div> <!-- indexline 끝 -->
+                 
+                  <div class="indexline">
+                     <div class= "row">
+                       <div class= "col-4 indexicon">
+                          <div class= "icon">추가정보</div>
+                       </div>
+                       <div class= "col-8 indexicontext">
+                          
+                          	<div class="amenities"> <!-- 리스트 span으로 바꿈 --> 
+							<span class="<%= 'text-line-through' if !@vet.hotel %>">호텔 /</span>
+							<span class="<%= 'text-line-through' if !@vet.supply %>">용품 판매 /</span>
+							<span class="<%= 'text-line-through' if !@vet.hour %>">24시간 진료 /</span>
+							<span class="<%= 'text-line-through' if !@vet.beauty %>">미용</span>
+					                     	</div>
+                         
+                         
+                       </div>
+                     </div> <!-- row 끝 -->
+                    </div> <!-- indexline 끝 -->
+                  <div class="indexline">
+                     <div class= "row">
+                       <div class= "col-4 indexicon">
+                          <div class= "icon">특이사항</div>
+                       </div>
+                       <div class= "col-8 indexicontext">
+                          <div class = "moreinfo"><%= @vet.description %></div>
+                       </div>
+                     </div> <!-- row 끝 -->
+                    </div> <!-- indexline 끝 -->
+                  <div class="indexline">
+                     <div class= "row">
+                       <div class= "col-4 indexicon">
+                          <div class= "icon">홈페이지</div>
+                       </div>
+                       <div class= "col-8 indexicontext">
+                          <div class ="homepage">
+                            <a href="<%= @vet.homepage %>"><%= @vet.homepage %></a>
+                           
+                          </div>
+                       </div>
+                     </div> <!-- row 끝 -->
+                  </div> <!-- indexline 끝 -->
+                 </div> <!-- infolist 끝 -->
+                 <div class= "col-md-6 col-xs-4 pricelist"> 
+                   <div class="indexline"> 
+                   <!--<div class="col-10 offset-1">-->
+                    <div class= "basicinfohead">가격정보</div>
+                    <!--</div>-->
+                    </div>
+                
+                   <div class="indexline"> 
+                    <div class= "row">
+                     <div class= "col-8">
+                      <div class= "pricetitle">강아지 기본진료</div>
+                     </div>
+                     <div class= "col-4">
+                      <div class= "price">5000</div>
+                     </div>
+                    </div>
+                   </div>
+                   
+                   <div class="indexline"> 
+                    <div class= "row">
+                     <div class= "col-8">
+                      <div class= "pricetitle">고양이 기본진료</div>
+                     </div>
+                     <div class= "col-4">
+                      <div class= "price">5000</div>
+                     </div>
+                    </div>
+                   </div>
+                   
+                   <div class="indexline"> 
+                    <div class= "row">
+                     <div class= "col-8">
+                      <div class= "pricetitle">고양이 피부병 검사</div>
+                     </div>
+                     <div class= "col-4">
+                      <div class= "price">20000</div>
+                     </div>
+                    </div>
+                   </div>
+                   
+                   <div class="indexline"> 
+                    <div class= "row">
+                     <div class= "col-8">
+                      <div class= "pricetitle">고양이 복부 초음파</div>
+                     </div>
+                     <div class= "col-4">
+                      <div class= "price">40000</div>
+                     </div>
+                    </div>
+                   </div>
+                   
+                   <div class="indexline"> 
+                    <div class= "row">
+                     <div class= "col-8">
+                      <div class= "pricetitle">고양이 요추천자 (기본)</div>
+                     </div>
+                     <div class= "col-4">
+                      <div class= "price">45000</div>
+                     </div>
+                    </div>
+                   </div>
+                  
+                  
+                     
+                   
+                     
+                    </div>
+                    </div><!-- hospitalinfo row 6:6 끝 -->
+              </div> <!-- hospitalinfo 끝 -->
+   
+       </div> <!-- showhospitaltext 끝 -->
+       <div class="showmap">
+       	
+       	
 
-		<!-- Carousel -->
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				  
-					<% if @photos %>
-						<!-- Indicators -->
-				    <ol class="carousel-indicators">
-							<% @photos.each do |photo| %>
-								<li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
-							<% end %>	
-						</ol>				
-					<% end %>     
-
-				  <div class="carousel-inner" role="listbox">
-				    <% if @photos %>				
-							<% @photos.each do |photo| %>
-								<div class="item <%= 'active' if photo.id == @photos[0].id %>">          
-				          <%= image_tag photo.image.url() %>
-				        </div>
-							<% end %>	
-						<% end %>
-				  </div>
-
-				  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">이전</span>
-				  </a>
-				  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">다음</span>
-				  </a>
-				</div>
-			</div>
-		</div>
-
-		<br>
-		<hr>
-
-		<!-- Reviews -->
-		
-		<div class="row">
-			<div class="col-md-12">
-				<h3> Reviews <span id="average_rating"></span> (<%= @reviews.count %>) </h3>
-				<div class="container">
-					<div>
-						<%= render 'reviews/form' %>
-					</div>
-					<div>
-						<%= render 'reviews/list' %>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-		
-		
-		<!-- Google Map -->
-		<div class="row">
-			<div class="col-md-12">
+			
 
           <div id="map"></div>
           <script>
@@ -159,12 +226,63 @@
           </script>
           <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap">
-          </script>    
+          </script>
 
 
-			</div>
-		</div>
+			
 
+       	
+		
+
+			
+	
+      </div> <!-- showmap 끝 -->
+     </div> <!-- showleft 끝 -->
+               
+    <div class= "col-xl-6 col-md-6 col-xs-12" id="showright">
+     <ul class= "reviewfilters">
+              <div class="row"> <!-- reviewfilters row -->
+               <div class="col-8 rating">
+                <span id="average_rating"></span>   리뷰 (<%= @reviews.count %>)개  
+               </div>
+               <div class="col-2 offset-4">
+                <div class="addreview" data-toggle="modal" data-target="#addreviewModal">새 리뷰
+                <i class="fa fa-pencil" aria-hidden="true"></i></div>
+               </div> 
+              </div>  <!-- reviewfilters row 끝 -->
+           </ul>  <!-- reviewfilters 끝 -->
+            <%= render 'shared/modal-addreview' %>
+           
+     <div class= "reviewlist">
+       
+    <%= render 'reviews/list' %>
+    
+      <div class= "arrows">
+            <%=paginate @reviewsp %>
+        </div>  <!-- arrows 끝 --> 
+      
+     </div> <!-- reviewlist 끝 --> 
+      
+    </div> <!-- showright 끝 -->
+ 
+   </div> <!-- showcontainer 6:6 row 끝-->
+  
+  </div> <!-- showcontainer 끝--> 
+      
+
+            <%= render 'shared/modal-addreservation' %>
+     
+
+		<!-- Image -->
+	
+
+	
+
+		<!-- Carousel -->
+
+		<br>
+		<hr>
+ 
 
 
 
@@ -176,5 +294,9 @@
 	  })
  </script>
  
+ 
+<script>
+  $('#datetimepicker').datetimepicker();
+</script> 
  
  

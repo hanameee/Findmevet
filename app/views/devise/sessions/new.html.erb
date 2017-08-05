@@ -1,43 +1,48 @@
-<div class="container">
+<div class="form-wrap">
+<div class="container login-container">
   <div class="row">
-    <div class="col-md-6 offset-md-3 text-center align-self-center reg-form">
-
-      <h2>로그인</h2>
-
+    <div class="col-md-6 offset-md-3 text-center align-self-center">
+      <div class="reg-form" id="navform">
+      <h2>로그인을 해주세요!</h2>
+          <div class="signup__character"><%= image_tag("login-teddy.png") %></div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <div class="form-group">
-          <%= f.label :이메일 %><br />
+          <div class="label">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          <%= f.label :이메일 %>
+          </div>
           <%= f.email_field :email, class: "form-control", placeholder: "이메일을 입력해주세요", autofocus: true %>
         </div>
 
         <div class="form-group">
-          <%= f.label :패스워드 %><br />
+          <div class="label">
+            <i class="fa fa-envelope" aria-hidden="true"></i>     
+          <%= f.label :패스워드 %>
+          </div>          
           <%= f.password_field :password, class: "form-control", placeholder: "패스워드를 입력해주세요", autocomplete: "off" %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
-          <div class="form-group">
-            <%= f.check_box :remember_me %>
+          <div class="form-group" id="rememberid">
+            <%= f.check_box :remember_me, class:"squaredFour" %>
             <%= f.label :이_계정_기억하기 %>
           </div>
         <% end -%>
-
-        <div class="action d-inline-block">
-          <%= f.submit "로그인", class: "btn btn-success" -%>
+        <div class="loginbtnwrap">
+          <div class="loginbtn">
+          <%= f.submit "로그인" -%>
+          </div>
+          <div class="loginbtn">
+            <i class="fa fa-facebook-square" aria-hidden="true">&nbsp&nbsp<%= link_to "페이스북으로 로그인", user_facebook_omniauth_authorize_path %></i>
+          </div>
+          <div class="loginbtn"><%= link_to "비밀번호 분실", new_password_path(resource_name) %>
+          </div>
         </div>
-
-        <div class="action d-inline-block">
-          <%= link_to "페이스북으로 로그인", user_facebook_omniauth_authorize_path %>
-        </div>
-
-        <div class="action d-inline-block">
-          <%= link_to "비밀번호 분실", new_password_path(resource_name), class: "btn btn-warning" %><br />
-        </div>
-
       <% end %>
-
-
+      
+    </div>
     </div>
   </div>
+</div>
 </div>

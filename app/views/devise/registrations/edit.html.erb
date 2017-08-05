@@ -1,27 +1,88 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="form-wrap">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-6 offset-md-3 text-center align-self-center reg-form" id="navform">
+        
+      <div class="user-edit-title">
+        <h2>개인정보 수정하기</h2>
+      </div>
+       <div class="signup__character"><%= image_tag("gomdol3.png") %></div>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-inputs">
+    
+         <!-- 모달 폼 추가 --> 
+    
+     	<div class="e-name">
+				<%= f.label :이름 %>
+			</div>
+			<div class="form-group">
+        <%= f.text_field :name, class:"form-control" %>
+			</div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+     	<div class="e-birthday">
+				<%= f.label :생년월일 %>
+			</div>
+			<div class="form-group">
+        <%= f.text_field :birth_date, class:"form-control" %>
+			</div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+     	<div class="e-phonenumber">
+				<%= f.label :전화번호 %>
+			</div>
+			<div class="form-group">
+        <%= f.text_field :phone_number, class:"form-control" %>
+			</div>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+      <div class="e-email">
+				<%= f.label :이메일 %>
+			</div>
+			<div class="form-group">
+        <%= f.text_field :email, class:"form-control" %>
+			</div>          
+                  
+                  
+     <!-- 모달 폼 추가 --> 
+    
+    <div class="e-password">
+		비밀번호 변경
+		</div>
+		<div class="form-group">
+    <%= f.text_field :password, autocomplete: "off", required: false , class:"form-control"%>
+    </div>
+    <p>*비밀번호를 바꾸고 싶지 않다면 빈칸으로 남겨주세요.</p>
+    <div class="e-password_confirmation">
+		비밀번호 변경 확인
+		</div>
+		<div class="form-group">
+    <%= f.text_field :password_confirmation, required: false , class:"form-control"%>
+    </div>
+    <div class="e-current_password">
+		현재 비밀번호
+		</div>
+		<div class="form-group">
+    <%= f.text_field :current_password, required: true , class:"form-control"%>
+    </div>
+    <p>*변경사항을 적용하기 위해 비밀번호 확인이 필요해요!</p>
+    
+   
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "제출" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div class="btn btn-secondary">
+<%= link_to "회원탈퇴", registration_path(resource_name), data: { confirm: "정말인가요?ㅠㅠ" }, method: :delete %>
+</div>
+<div class="btn btn-secondary">
+<%= link_to "뒤로가기", :back %>
+</div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>

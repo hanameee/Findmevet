@@ -1,0 +1,244 @@
+//정리끝 ~ 들여쓰기 해야됨~
+
+@import 'variables';
+
+// col 패딩 없애기용 설정
+#showleft, #showright {
+  height: 500px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.showcontainer {
+  width: 1100px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+//**********carousel/head
+
+
+
+//**********************showleft
+
+#showleft {
+   overflow-y: scroll;
+
+  .showhospitaltext {
+  min-height : 50%;//260px;
+  background-color: white;;
+  padding: 3%;
+  border-top: solid 1px;
+  border-color: $lightgrey;
+  
+  .hospitaltitle {
+      margin-bottom: 5%;//15px;
+      font-size: 2.5rem; //30px
+      font-weight: normal;
+      width: 100%;
+      height: 40px;
+    
+    .vettitle, .addreservation, .chatting {
+      float: left;
+    }
+      
+    .addreservation, .chatting {
+    color: grey;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 2rem;
+    width: 40px;
+    height: 25px;
+    background-color: #f7f3e8;
+    border: solid 2px;
+    border-color: #fac917;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    }
+
+   .score {
+      color: #fac917;
+      font-size: 1.8rem;//20px;
+      }
+    
+   .fa-heart, .fa-heart-o {
+     color: $logo-color;
+     float: right;
+     font-size: 2rem;
+     margin: 6px;
+     cursor: pointer;
+   }
+  
+   .follownumber { //이거 더 예쁘게 바꾸고싶은데.. 하트밑에오게...
+     float: right;
+     font-size: 2rem;
+     color: grey;
+     
+   }
+  }
+      
+  .hospitalinfo {
+    
+     
+      
+      .infolist , .pricelist {
+      padding: 0;
+     }
+     
+      .address, .telephone, .homepage, .amenities, .moreinfo, .pricetitle, .price {
+     font-size: 1rem;
+     line-height: 1.8rem;
+      }
+      
+      .infolist {
+        
+        // .indexicon {
+        //   padding-left: 10%;
+        // }
+      }
+
+      .pricelist {
+    
+      // .pricetitle {
+      //   border-bottom: solid 1px;
+      //   border-color: $lightgrey;
+      // } 밑줄 안넣는게 낫나...
+    
+       .price {
+        text-align: right;
+   
+  }
+ 
+}
+    }
+  }
+ 
+  .showmap {
+  height: 400px;//480px;
+  background-color: skyblue;
+}
+
+}
+
+
+//***********************showright
+
+#showright {
+
+ .reviewfilters {
+  //워 여기에 진짜 이상한 마진 1px정도 위아래로 붙어있는데 뭔지 모르겠다
+    margin: 0;//10px;
+    padding: 1.5%;
+    line-height: 2rem;
+    height: 40px;//40px;
+    // background-color : white;
+    border-bottom: solid 1px;
+    border-top: solid 1px;
+    border-color: $lightgrey;
+    background-color: white;
+    
+    .rating {
+      padding-left: 0;
+    }
+    
+     div {
+     display: inline;
+     font-size: 1.2rem;//15px;
+     line-height: 2rem; //마진때문에 조정
+     
+     }
+   
+    // .fa-angle-down {
+    // font-size: 1.5rem; //20px
+    // font-weight: bold;
+    // }
+     
+     .addreview {
+      cursor: pointer;
+      margin-left: 40px;
+   
+    }  
+   }
+   
+  .level-up {
+      float: right;
+      
+    } 
+   
+ .reviewlist {
+  height: 460px;//460px;
+  display: block;
+  overflow-y: scroll;
+  background-color: white;
+  
+  .reviewnilbox {
+    text-align: center;
+    padding: 10%;
+    height: 380px;
+    background-color: white;
+    // background-image: url(dtbackground2.png);
+    // overflow-y :hidden;
+   
+    .deletebutton {
+      line-height: 1px;
+    }
+    
+    
+    .reviewniltext {
+      font-size: 1.5rem;
+      color: grey ;
+      
+     .reviewvetname {
+      color: $logo-color;
+     } 
+    
+    }
+  }
+  
+  .reviewbox {
+    padding: 7px;//1% ;
+    height: 75px;
+    border-bottom: solid 1px;
+    border-color: $lightgrey;
+
+    .reviewdate {
+      font-size: 1rem;//14px;
+      color: grey;
+      }
+  
+    span {
+      font-size: 1rem;
+      }
+  
+    .showbriefing {
+      font-size: 1.2rem;
+      float: left;
+      }
+  
+    .fa-plus-circle {
+      float: right; 
+      color: #ececec;
+      font-size: 2rem;
+      cursor: pointer;
+      }
+    }
+  }
+}
+
+
+//*******************modal
+
+.modal-open {
+    overflow: scroll;
+}
+
+
+.modal-content {
+  
+  .col-11 {
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+}
+

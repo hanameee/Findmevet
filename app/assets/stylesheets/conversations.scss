@@ -1,0 +1,83 @@
+
+.reservation_index {
+  height: 480px;  
+}
+
+#reservation_left {
+  background-color:  #ececec;
+  height: 480px;
+}
+
+.reservation_hospitalpic {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin: 15% 20%;
+}
+
+
+.reservation_hospitalname {
+  font-size: 20px;
+  padding-bottom: 5%;
+}
+
+#reservation_right {
+  .convlist {
+  
+  }
+  .convbtn {
+  width: 100px;
+  padding: 5px 10px;
+  background: #f65e5e;
+  color:white;
+  border-radius: 30px;
+  font-size: 1rem;
+  }
+
+}
+
+.container_reservation {
+  height: 400px;
+}
+
+.reservation_sec1 {
+  height: 50px;
+}
+
+.reservation_sec2 {
+  height: 100px;
+}
+
+.writereview {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.reservation_calendar {
+  height: 280px;
+  width: 280px;
+  margin-bottom: 5%;
+}
+
+.reservation_timepicker {
+  margin-left: 10%;
+  width: 220px;
+  height: 80px;
+}
+
+.reservation_message {
+  height: 400px;
+  width: 500px;
+}
+
+.lowersecnumber {
+  padding-top: 7%;
+  padding-left: 7%;
+  margin-bottom: 0%;
+}
+
+.lowerseclocation {
+  padding-left: 7%;
+  margin-bottom: 0%;
+}
+

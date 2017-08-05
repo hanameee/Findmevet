@@ -1,0 +1,109 @@
+//************************************** show carousel 
+
+.carouselsec {
+  background-color: #ececec;
+  position: center;
+}
+
+#head {
+  height: 305px;
+  background-color: #ececec;
+  height: 315px;
+  background-color: #ececec;
+  
+  .practiceimg {
+    height: 315px;
+    padding: 0.5% ;
+    overflow: hidden;
+  
+  }
+  
+  .carousel-item {
+    width: 100%;
+  }
+
+#showCarousel {
+  width: 100%;
+ 
+  
+  
+
+  
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+  transform: translateX(33.3%);
+}
+
+.carousel-inner .carousel-item-left.active, 
+.carousel-inner .carousel-item-prev {
+  transform: translateX(-33.3%)
+}
+  
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+  
+ 
+  
+  
+}
+  
+
+}  
+
+  
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+  transform: translateX(33.33%);
+}
+
+.carousel-inner .carousel-item-left.active, 
+.carousel-inner .carousel-item-prev {
+  transform: translateX(-33.33%)
+}
+  
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+  
+ 
+
+
+
+//************************************** show carousel  끝
+
+
+
+
+//************************************** admin carousel
+
+.adminCarousel {
+ 
+  .d-block {
+    height: 200px;
+  }
+}
+
+//************************************** admin carousel 끝
+
+
+
+
+
+//************************************** modal-review carousel 
+
+
+//************************************** modal-review carousel 끝
+
+
+
+
+
+
+
+
+

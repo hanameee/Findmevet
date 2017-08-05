@@ -7,10 +7,12 @@ class VetsController < ApplicationController
   end
 
   def show
-    
+    @vets = Vet.find(params[:id])
     @photos = @vet.photos
     @reviews = @vet.reviews
     @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
+    @reviewsp = @reviews.order(:created_at).page params[:page] #일단 이렇게
+   
   end
 
   def new
@@ -33,13 +35,7 @@ class VetsController < ApplicationController
     end
   end
 
-  def edit
-    if current_user.id == @vet.user.id
-      @photo = @vet.photos
-    else
-      redirect_to root_path, notice: "you don't have permission"
-    end
-  end
+
 
   def update
     if @vet.update(vet_params)

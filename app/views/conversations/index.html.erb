@@ -1,39 +1,94 @@
 <div class="row">
-	<div class="col-md-12">
-		
-		<div class="panel panel-default">
-			<div class="panel-heading">Your conversations</div>
-			<div class="panel-body">
-				<div class="container">
-					<% @conversations.each do |conversation| %>
-						<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+	<div class="reservation_index">
+  <div class="row">
+    <div class="col-xl-3 col-md-3 indexleft" id="reservation_left">
+      <div class="left_hospitalpic">
+        <%= image_tag("vet01", class: "reservation_hospitalpic", :alt => "first slide")  %>
+      <div class="left_hospitalinfo">
+        <p class="reservation_hospitalname">도토 동물병원</p> <!--병원 이름/정보/사진 불러오기 기능 넣어주세요!-->
+        <p>번호:</p>        
+        <p>주소: 서울특별시 성북구 안암동 뭐시기</p>
+        <p>특이사항: 24시간, 응급실 운영</p>
+      </div>z
+      </div>
+    </div>
 
-						<%= link_to conversation_messages_path(conversation) do %>
-
-							<div class="row conversation">
-								<div class="col-md-2">
-									<%= other.name %><br>
-									<%= conversation.messages.last.message_time %>
-								</div>
-								<div class="col-md-8">
-									<%= conversation.messages.last.content %>
+    <div class="col-xl-9 col-md-9 col-xs-12 indexright" id="reservation_right">
+      <div class="row">
+        <div class="col-1">
+        </div>
+        
+        <div class="col-11">
+          <p class="writereview">예약 상담</p><!--1:1 채팅기능 넣어주세요!-->
+          <div class="container_reservation">
+          	<!-- 채팅창 기능 시작-->
+				    <div class="panel panel-default">
+							<div class="panel-heading">Your conversations</div>
+							<div class="panel-body">
+								<div class="container">
+									<% @conversations.each do |conversation| %>
+										<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+				
+										<%= link_to conversation_messages_path(conversation) do %>
+				
+											<div class="row conversation">
+												<div class="col-md-2">
+													<%= other.name %><br>
+													<%= conversation.messages.last.message_time %>
+												</div>
+												<div class="col-md-8">
+													<%= conversation.messages.last.content %>
+												</div>
+											</div>
+				
+										<% end %>
+									<% end %>
 								</div>
 							</div>
-
+						</div>
+				
+						<h3>All Users</h3>
+						<% @users.each do |user| %>
+							<% if user.vets.count > 0 %>
+								<%= user.name %>
+								<%= user.vets[0].vtitle %>
+								<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+							<% end %>
+							<br>
 						<% end %>
-					<% end %>
-				</div>
-			</div>
-		</div>
-
-		<h3>All Users</h3>
-		<% @users.each do |user| %>
-			<% if user != current_user %>
-				<%= user.name %>
-				<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
-			<% end %>
-			<br>
-		<% end %>
-
+						<!--채팅 기능 끝-->
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
 	</div>
 </div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script type="text/javascript">
+
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  
+  } );
+
+$( function() {
+    $( "#timepicker" ).timepicker();
+  
+  } );
+
+
+
+
+
+
+
+  // $(function() {
+  //   $('#datetimepicker3').datetimepicker({
+  //     pickDate: false
+  //   });
+  // });
+</script>

@@ -1,0 +1,31 @@
+// 네비게이션
+.gnb {
+  width: 100%;
+  height: 55px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: rgba(255,255,255,0.7);
+
+  .logo {
+    width: 150px;
+    height: 29.4715445px;
+    float: left;
+    margin: 10px;
+    color: #fff;
+  }
+
+  ul {
+    // width: 400px;
+    float: right;
+    padding: 0;
+    margin: 20px 20px 20px 20px;
+  }
+
+  li {
+    float: left;
+    margin: 0 10px 0 10px;
+    list-style-type: none;
+    }
+}

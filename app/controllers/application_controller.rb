@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :phone_number, :postcode, :address, :address_detail, :birth_date, :role])
+    @searchresult = params[:q]      
     end
-    
-  
 end

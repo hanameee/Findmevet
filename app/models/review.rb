@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+   paginates_per 5
+  
   belongs_to :vet
   belongs_to :user
   mount_uploader :picture, PictureUploader

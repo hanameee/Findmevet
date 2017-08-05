@@ -1,3 +1,105 @@
 // Place all the styles related to the Vets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the Vets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//NEW
+#f-hospitalresgister{
+  margin-top: 5%;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
+
+.f-hospitalname {
+  font-size: 12px;
+  text-align: left;
+}
+
+.f-hospitallocation {
+  float: left;
+  font-size: 12px;
+  text-align: left;
+}
+
+#postcodify_search_button {
+    border: none;
+    padding: 5px;
+    background: #F77272;
+    margin: 10px 0px 10px 0px;
+    color: #FFFFFF;
+    border-radius: 5px;
+    &:hover {
+      background:#D75252;
+      transition:all 0.3s ease;
+    }
+}
+
+.f-hospitalphone {
+  font-size: 12px;
+  text-align: left;
+}
+
+.f-hospitalhompage {
+  font-size: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.f-hospitalintro {
+  font-size: 12px;
+  text-align: left;
+}
+
+.f-hospitalspecial {
+  font-size: 12px;
+  text-align: left;
+}
+
+.f-check {
+  float: left;
+  width: 100px;
+  margin-bottom: 0%;
+  font-size: 12px;
+}
+
+#f-imageregister {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+#f-check {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.f-hospitalimage {
+  font-size: 12px;
+}
+
+.fileselect {
+  padding-left: 0%;
+}
+
+#hospitalimage {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.f-saving {
+  margin-bottom: 10%;
+}
+
+
+//EDIT
+.edit-pictureupload {
+  margin-left: 10%;
+}
+
+.edit-saving {
+  float: right;
+}

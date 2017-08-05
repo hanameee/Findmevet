@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805061450) do
-
-  create_table "chat_rooms", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 20170805223439) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -48,12 +40,12 @@ ActiveRecord::Schema.define(version: 20170805061450) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text     "body"
+    t.text     "content"
     t.integer  "user_id"
-    t.integer  "chat_room_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -154,6 +146,7 @@ ActiveRecord::Schema.define(version: 20170805061450) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "picture"
+    t.float    "average"
     t.index ["user_id"], name: "index_vets_on_user_id"
   end
 

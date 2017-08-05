@@ -1,31 +1,84 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
 <div id="addreviewModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          
-            새 리뷰 작성
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			새 리뷰 작성
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-            <%= render 'reviews/form' if !@hasReview %>
-      </div>
-      <div class="modal-footer">
-          <div>
-          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">확인</button>
-            <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
-            <span class="picture">
-              <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-            </span>
-          </div>  
-      </div>
-  </div>
-  </div>
+        <%= form_for([@vet, @vet.reviews.new]) do |f| %>
+
+<div class="review_form">
+
+  <div id="user_stars"></div>
+<h4> 한줄평 </h4>
+<div class="form_group">
+  <%= f.text_area :comment , rows: 1, class: "form-control" , placeholder:'최고의 병원입니다~' %>  
+</div>
+<br>
+
+
+<h4> 진료 동물 </h4>
+<div class="form_group">
+  <%= f.text_area :reviewanimal, rows: 1, class: "form-control" , placeholder:'고양이 - 6살, 중성화 남 ' %>  
+</div>
+<br>
+
+
+<h4> 진료 내역 </h4>
+<div class="form_group">
+  <%= f.text_area :treatment, rows: 3, class: "form-control" , placeholder:'기본 진료, 발톱 깎기, 피부병 ' %>  
+</div>
+<br>
+
+
+<h4> 진료 내역 </h4>
+<div class="form_group">
+  <%= f.text_area :reviewmore, rows: 5, class: "form-control", placeholder: "자유롭게 후기를 남겨주세요." %>
+</div>
+
+<div> 
+  <span class="picture">
+    <%= f.file_field :picture,  class:"addpicbutton", accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+</div>
+
+<%= f.hidden_field :vet_id, value: @vet.id %>
+<br>
+
+
 </div>
 
 
+
+      </div>
+      <div class="modal-footer">
+
+        <div class="actions">
+  <%= f.submit "제출하기", class: "btn btn-secondary submitbutton" %></div>
+            <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href="">
+              <i class="glyphicon glyphicon-camera"></i></a></li><li><a href="">
+                <i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+		    </div>	
+    
+      </div>
+  </div>
+</div>
+<% end %>
+
+<script>
+  $('#user_stars').raty({
+    path: '/assets',
+    scoreName: 'review[star]',
+    score: 1
+  });
+</script>
+
 <script type="text/javascript">
-  $('#micropost_picture').bind('change', function() {
+  $('#review_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');

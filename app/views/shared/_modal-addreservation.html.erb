@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+<div id="addreservationModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+			예약하기
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      
+        <div class="modal-body">
+          <%= form_for([@vet, @vet.reservations.new]) do |f| %>
+  
+        <div class="review_form"> 
+          <h4> 예약날짜 </h4>
+          <div class="datetimepicker">
+            <div class="form_group">
+              <input id="datetimepicker" type="text" >
+            </div>
+          </div>
+        </div>
+          <br>
+        
+          <%= f.hidden_field :vet_id, value: @vet.id %>
+          <br>
+        </div>
+      
+
+      <div class="modal-footer">
+        <br>
+        <div class="actions">
+          <%= f.submit "제출하기", class: "btn btn-secondary submitbutton" %>
+        </div>
+          <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+		  </div>	
+		  </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+

@@ -1,0 +1,114 @@
+@import 'variables';
+
+.modal-open {
+    overflow: hidden;
+}
+
+.modal-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: $lightpink;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  
+  .close {
+    float: right;
+
+  }
+  
+}
+
+.modal-footer {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  background-color: $lightpink;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.modal-content {
+    -webkit-border-radius: 15px !important;
+    -moz-border-radius: 15px !important;
+    border-radius: 15px !important; 
+    border: solid 5px;
+    border-color: white;
+
+  
+.form-control {
+   border-radius: 0.5rem;
+  }
+  
+
+}
+
+//사진 추가하기
+
+.addpicbutton {
+  
+  margin: 10px;
+  
+  .input {
+    background: transparent;
+    border: none;
+  }
+}
+
+
+//***********addreview 별점 rating system
+
+#user_stars {
+  height: 30px;
+  
+}
+
+ 
+
+//***********addreview 별점 rating system 끝
+
+//***********review
+
+
+#reviewmodalCarousel {
+  height: 100%;
+  
+  img {
+   height: 100%;
+    padding: 5px;
+  }
+
+  
+.reviewModalhead {
+  height: 40px;
+  
+.seestars {
+  float: right;
+  color: $staryellow;
+  font-size: 1.5rem;
+}
+
+}
+
+.reviewModalbody {
+
+
+.briefing, .reviewaniaml , .treatment, .reviewmore {
+  line-height: 1.8rem;
+}
+
+}
+  
+}
+
+
+//예약하기 리뷰모달 (date picker / time picker)
+
+.datepicker {
+  font-size: 12px;
+}
+
+.timepicker {
+  font-size: 12px;
+  z-index: 50;
+}

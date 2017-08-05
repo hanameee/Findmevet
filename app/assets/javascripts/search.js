@@ -13,11 +13,7 @@ $(document).on("turbolinks:load", function(){
       {
         listLocation: "vets",
         header: "<strong>병원명</strong>"
-      },
-      {
-        listLocation: "vets",
-        header: "<strong>주소</strong>"
-      }      
+      }
     ],
     
     list: {

@@ -1,6 +1,7 @@
 require 'mailgun'
 class ReservationsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:create]
+
   def create
     @reservation = current_user.reservations.create(reservation_params)
     if @reservation.save

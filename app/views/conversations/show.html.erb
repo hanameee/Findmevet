@@ -1,0 +1,175 @@
+<div id="conversation-wrap">
+<div class="row"> <!-- showcontainer 6:6 row -->
+  <div class="col-xl-4 col-md-4" id="showleft">
+    <div class= "showhospitaltext">
+      <div class= "hospitaltitle">
+        <div class="vettitle_show">
+          <div class="vettitle"><%= @vet.vtitle %></div>
+        </div>
+        <!--<span class= "score"> 3.5 </span>-->
+
+					<% if current_user.is_like?(@vet) %>
+							<%= link_to vet_like_path(@vet), method: :post do %>
+							<i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+						<% end %>
+					<% else %>
+						<%= link_to vet_like_path(@vet), method: :post do %>
+							<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+						<% end %>
+					<% end %>
+	
+			  <div class="follownumber"><%= @vet.likes.size %></div>
+      </div><!-- hospitaltitle 끝 -->
+              
+      <div class= "hospitalinfo">
+        <div class= "row"> <!-- hospitalinfo row 6:6 ... infolist, pricelist  -->
+          <div class= "col-xl-12 col-md-12 infolist">
+            <div class="indexline"> 
+              <div class= "basicinfohead">기본정보</div>
+            </div>  <!-- indexline 끝 -->
+            <div class="indexline">
+              <div class= "row">
+                <div class= "col-4 indexicon">
+                  <div class= "icon">병원주소</div>
+                </div>
+                <div class= "col-8 indexicontext">
+                  <div class = "address"><%= @vet.address %></div>
+                </div>
+              </div> <!-- row 끝 -->
+            </div>  <!-- indexline 끝 -->
+            <div class="indexline">
+              <div class= "row">
+                <div class= "col-4 indexicon">
+                  <div class= "icon">병원전화</div>
+                </div>
+                <div class= "col-8 indexicontext">
+                  <div class = "telephone"><%= @vet.telephone %></div>
+                </div>
+              </div> <!-- row 끝 -->
+            </div> <!-- indexline 끝 -->
+           
+            <div class="indexline">
+              <div class= "row">
+                <div class= "col-4 indexicon">
+                  <div class= "icon">추가정보</div>
+                </div>
+                <div class= "col-8 indexicontext">
+                  <div class="amenities"> <!-- 리스트 span으로 바꿈 --> 
+      							<span class="<%= 'text-line-through' if !@vet.hotel %>">호텔 /</span>
+      							<span class="<%= 'text-line-through' if !@vet.supply %>">용품 판매 /</span>
+      							<span class="<%= 'text-line-through' if !@vet.hour %>">24시간 진료 /</span>
+      							<span class="<%= 'text-line-through' if !@vet.beauty %>">미용</span>
+  	              </div>
+                </div>
+              </div> <!-- row 끝 -->
+            </div> <!-- indexline 끝 -->
+            
+            <div class="indexline">
+              <div class= "row">
+                <div class= "col-4 indexicon">
+                  <div class= "icon">특이사항</div>
+                </div>
+                <div class= "col-8 indexicontext">
+                  <div class = "moreinfo"><%= @vet.description %></div>
+                </div>
+              </div> <!-- row 끝 -->
+            </div> <!-- indexline 끝 -->
+            
+            <div class="indexline">
+              <div class= "row">
+                <div class= "col-4 indexicon">
+                  <div class= "icon">홈페이지</div>
+                </div>
+                <div class= "col-8 indexicontext">
+                  <div class ="homepage">
+                    <a href="<%= @vet.homepage %>"><%= @vet.homepage %></a>
+                  </div>
+                </div>
+              </div> <!-- row 끝 -->
+            </div> <!-- indexline 끝 -->
+          </div>
+        </div>
+      </div>
+      
+  </div>
+</div>
+
+    <div class="col-xl-8 col-md-8 col-xs-8" id="reservation_right">
+      <div class="row">
+        <div class="col-12">
+          <p class="writereview">예약 상담</p><!--1:1 채팅기능 넣어주세요!-->
+          <hr>
+          <div class="container_reservation">
+          	<!-- 채팅창 기능 시작-->
+				    <div class="panel panel-default">
+							<div class="panel-heading">예약 상담 히스토리</div>
+							<div class="panel-body">
+								<div class="container">
+									<% @conversations.each do |conversation| %>
+										<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+				
+										<%= link_to conversation_messages_path(conversation) do %>
+				
+											<div class="row conversation">
+												<div class="col-md-2">
+													<%= other.name %><br>
+													<%= conversation.messages.last.message_time %>
+												</div>
+												<div class="col-md-8">
+													<%= conversation.messages.last.content %>
+												</div>
+											</div>
+				
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+				<div>
+				  <div class="panel-heading">누구에게 메세지를 보내시겠어요?</div>
+				</div>
+						
+						<% @users.each do |user| %>
+							<% if user.vets.count > 0 %>
+							  <div class="convlist">
+								<%= user.name %>
+								<%= user.vets[0].vtitle %>
+								<div class="text-center convbtn"><i class="fa fa-plus-circle" aria-hidden="true"></i><%= link_to "1:1 상담하기", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+								</div>
+								</div>
+							<% end %>
+						<% end %>
+						<!--채팅 기능 끝-->
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script type="text/javascript">
+
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  
+  } );
+
+$( function() {
+    $( "#timepicker" ).timepicker();
+  
+  } );
+
+
+
+
+
+
+
+  // $(function() {
+  //   $('#datetimepicker3').datetimepicker({
+  //     pickDate: false
+  //   });
+  // });
+</script>

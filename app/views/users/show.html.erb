@@ -1,17 +1,17 @@
 <header class="pic">
   <div class="mypage">
     <div class="row mypage-header">
-      <div class="col-2">
+      <div class="col-1">
         <% case current_user.reviews.count %>
         <% when 0 .. 5 %>
-          <%= image_tag("bear1", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("gomdol1", class: "imgmypicheader", :alt => "first slide")  %>
         <% when 6 .. 10 %>
-          <%= image_tag("bear2", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("gomdol2", class: "imgmypicheader", :alt => "first slide")  %>
         <% else %>
-          <%= image_tag("bear3", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("gomdol3", class: "imgmypicheader", :alt => "first slide")  %>
         <% end %>
       </div>
-      <div class="col-3" id="mypage_info"><!--수정버튼을 눌렀을 때 개인정보 수정 가능하게 하기-->
+      <div class="col-2" id="mypage_info"><!--수정버튼을 눌렀을 때 개인정보 수정 가능하게 하기-->
         <p class="username"><%= current_user.name%>님</p>
         <p class="birthday"><%= current_user.birth_date %></p>
         <p class="phonenumber">전화번호: <%= current_user.phone_number%></p>
@@ -19,37 +19,12 @@
       </div>
       <div class= "col-1">
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">수정</button>
+        <!--<button type="button" class="btn btn-info btn-sm" href='devise/registrations/edit'>수정</button>-->
+        <%= link_to '수정', edit_user_registration_path(current_user), class: 'btn btn-info btn-sm' %>
+        <%= link_to '진료일지', examinations_path(current_user), class: 'btn btn-info btn-sm' %>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-        
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">개인정보 수정하기</h4>
-              </div>
-              <div class="modal-body">
-                <p>이름</p>
-                 <textarea class="form-control input-lg" autofocus="" placeholder="김예은"></textarea>
-                 <br>
-                 <p>생년월일</p>
-                 <textarea class="form-control input-lg" autofocus="" placeholder="1996/03/23"></textarea>
-                 <br>
-                 <p>전화번호</p>
-                 <textarea class="form-control input-lg" autofocus="" placeholder="0101010101"></textarea>
-                 <br>
-                 <p>이메일</p>
-                 <textarea class="form-control input-lg" autofocus="" placeholder="gmail.com"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>    
+        <!-- Modal //필요없음-->
+            
       </div>
     </div>  
   </div>
@@ -58,26 +33,150 @@
 
 <div class="sec-top">
   <div class="row">
+
     <div class="col-6 mypageleft">
       <div class="box1">
       	<p class="follow">내가 등록한 리뷰</p>
-        <a href= "/hospitals/show">
-      	<span class="reviewname">도토 동물병원</span> 	
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i> 
-      	<span class="reviewdate">17-01-10</span> </a>
+        
+         <% if current_user.reviews.count > 0 %>
+         <% current_user.reviews("id desc").each do |r| %>
+      	<span class="reviewname"><a href= "/vets/<%=r.vet_id%>"><%= Vet.find(r.vet_id).vtitle %></a></span> 	
+      <!--# 	<i class="fa fa-star" aria-hidden="true"></i>-->
+      <!--# 	<i class="fa fa-star" aria-hidden="true"></i>-->
+      <!--# 	<i class="fa fa-star" aria-hidden="true"></i>-->
+      <!--# 	<i class="fa fa-star" aria-hidden="true"></i>-->
+      <!--# 	<i class="fa fa-star" aria-hidden="true"></i> -->
+      	<span class="reviewdate"><%= r.created_at %></span> 
       	<div class="row">
       	  <div class="col-9">
-      	    <h3 class="review1">도토 동물병원은 최고의 동물병원이다. 만족스러웠다. </h3>
+      	    <h3 class="review1"><%= r.comment %> </h3>
           </div>
       	  <div class="col-3">
             <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview-<%= r.id %>">더보기</span>
             </button>      	     
-            <%= render 'shared/modal-review' %>
+                        <div   class="modal fade" id="seemorereview-<%= r.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                       <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                         <h5 class="modal-title" id="exampleModalLabel">리뷰 보기</h5>
+                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                         </button>
+                                        </div>
+                                        <div class="modal-body" id = >
+                                              <div class= "carouselsec">
+                                                <div class="container text-center my-3">
+                                                    <div class="row mx-auto my-auto">
+                                                        <div id="reviewmodalCarousel" class="carousel slide" data-ride="carousel">
+                                                            <div class="carousel-inner" role="listbox">
+                                                                <div class="carousel-item active">
+                                                                   <%= image_tag("vet04.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                   <%= image_tag("vet05.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                   <%= image_tag("vet06.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                   <%= image_tag("vet02.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                   <%= image_tag("vet01.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <%= image_tag("vet02.jpg" ,class: "d-block col-4 img-fluid", :alt => "first slide") %>
+                                                                </div>
+                                                            </div>
+                                                            <a class="carousel-control-prev" href="#reviewmodalCarousel" role="button" data-slide="prev">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="carousel-control-next" href="#reviewmodalCarousel" role="button" data-slide="next">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              </div> 
+                                <div class= "reviewtext">
+                                 <div class="row">
+                                  <div class=" col-11 offset-1">
+                                  <div class= "reviewModalhead">
+                                                      <span><%= r.user.name%></span>
+                                  <span class="reviewdate">   
+                            
+                             <span class="reviewdate"> <%= r.created_at.strftime("%v") %></span>
+                                   <span class="seestars">  
+                                    <span id="stars_<%= r.id %>"></span>
+                                    </span>
+                                  </span>
+                                  
+                                </div>
+                                 </div>
+                                 </div> 
+                                <div class= "reviewModalbody">
+                                      
+                                 <div class="indexline">
+                                  <div class= "row">
+                                   <div class= "col-2 offset-1 indexicon">
+                                    <div class= "icon">한줄평</div>
+                                   </div>
+                                   <div class= "col-9 indexicontext">
+                                    <div class= "briefing"><%= r.comment %></div>
+                                   </div>
+                                  </div>
+                                 </div>  
+                                  
+                                 <div class="indexline">  
+                                  <div class= "row">
+                                   <div class= "col-2 offset-1 indexicon">
+                                    <div class= "icon">진료동물</div>
+                                   </div>
+                                   <div class= "col-9 indexicontext">
+                                    <div class= "reviewanimal"><%= r.reviewanimal %></div>
+                                   </div>
+                                  </div>
+                                 </div>  
+                                  
+                                 <div class="indexline">  
+                                   <div class= "row">
+                                   <div class= "col-2 offset-1 indexicon">
+                                    <div class= "icon">진료항목</div>
+                                   </div>
+                                   <div class= "col-9 indexicontext">
+                                    <div class= "treatment"><%= r.treatment %></div>
+                                   </div>
+                                  </div>
+                                </div> 
+                                 
+                                 <div class="indexline">    
+                                  <div class= "row">
+                                   <div class= "col-2 offset-1 indexicon">
+                                    <div class= "icon">자유리뷰</div>
+                                   </div>
+                                   <div class= "col-9 indexicontext">
+                                    <div class= "reviewmore"><%= r.reviewmore %></div>
+                                   </div>
+                                    
+                                  </div>
+                                 </div>   
+                                 
+                                 
+                               </div>
+                                                    
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                       
+                                       </div>
+                                       </div>
+                                       </div>
+                                       </div>
+                                       
             <button type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
             </button>
@@ -86,58 +185,17 @@
             </button>
           </div>
       	</div>
-      	
-        <a href= "/hospitals/show" >
-      	<span class="reviewname">잠보 동물병원</span> 	
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<span class="reviewdate">17-04-23</span> </a>
-      	<div class="row">
-      	  <div class="col-9">
-      	    <h3 class="review1">좀 더 꼼꼼히 봐주셨으면 좋았을텐데 어쩌고 저쩌고. </h3>
-          </div>
-      	  <div class="col-3">
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
-            </button>      	     
-            <%= render 'shared/modal-review' %>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
-            </button>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true">삭제</span>
-            </button>
-          </div>
-      	</div>
-
-      	<a href= "/hospitals/show" >
-      	<span class="reviewname">사랑 동물병원</span> 	
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<i class="fa fa-star" aria-hidden="true"></i>
-      	<span class="reviewdate">17-07-15</span> </a> 
-      	<div class="row">
-      	  <div class="col-9">
-      	    <h3 class="review1">사랑 동물병원은 최고의 동물병원이다. 만족스러웠다. </h3>
-          </div>
-      	  <div class="col-3">
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
-            </button>      	     
-            <%= render 'shared/modal-review' %>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
-            </button>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-trash" aria-hidden="true">삭제</span>
-            </button>
-          </div>
-      	</div>
+      	<% end %>
+      	<% else %>
+      	      <p class="mypage-noreview">아직 등록된 리뷰가 없습니다!</p>
+      	 <% end %>
       	
       </div>
     </div>
+   
+    
+
+
 
     <div class="col-6 mypageright">
       <div class="box2">
@@ -145,34 +203,22 @@
         <p class="follow">내가 팔로우한 병원</p>
         <div class="following_hospitals">
           <div class="row" id="follows">
-            <div class="col-3 follow1">
-              <%= image_tag("follow1", class: "imgfollow", :alt => "first slide")  %>
-              <p class="followname">
-                <a class="followname" href="/hospitals/index" role="button">도토 동물병원</a>
-              </p>
-            </div>
-            <div class="col-3 follow2">
-              <%= image_tag("follow2", class: "imgfollow", :alt => "first slide")  %>
-              <p class="followname">
-                <a class="followname" href="/hospitals/index" role="button">잠보 동물병원</a>
-              </p>
-            </div>
-            <div class="col-3 follow3">
-              <%= image_tag("follow3", class: "imgfollow", :alt => "first slide")  %>
-              <p class="followname">
-                <a class="followname" href="/hospitals/index" role="button">멋쟁 동물병원</a>
-              </p>
-            </div>
-            <div class="col-3 follow4">
-              <%= image_tag("follow4", class: "imgfollow", :alt => "first slide")  %>
-              <p class="followname">
-                <a class="followname" href="/hospitals/index" role="button">사랑 동물병원</a>
-              </p>
-            </div>
+            <% if Like.where(user_id: current_user.id).count > 0 %>
+            <% Like.where(user_id: current_user.id).order(:vet_id).each do |r| %>
+              <div class="col-3 follow1">
+                <%= image_tag("follow1", class: "imgfollow", :alt => "first slide")  %>
+                <p class="followname">
+                  <a href= "/vets/<%=r.vet_id%>" role="button"><%= Vet.find(r.vet_id).vtitle %></a>
+                </p>
+              </div>
+            <% end %>
+            	<% else %>
+      	      <p class="mypage-noreview">아직 팔로우한 병원이 없습니다!</p>
+      	    <% end %>
+      	
           </div>
         </div> 
         
-        </div>
       </div>
     </div>
     
@@ -184,20 +230,48 @@
   <p class="sectitle">리뷰를 작성하여 테디의 꿈을 이뤄주세요!</p>
   <div class="row mypage-section">
     <div class="col-2 mypic">
-      <%= image_tag("bear1", class: "imgmypic1", :alt => "first slide")  %>
+      <%= image_tag("gomdol1", class: "imgmypic1", :alt => "first slide")  %>
       <p class="mypictext">1단계 아기테디</p>
       <p class="mypictext">리뷰수 0~5개</p>
     </div>
     <div class="col-2 mypic">
-      <%= image_tag("bear2", class: "imgmypic2", :alt => "first slide")  %>
+      <%= image_tag("gomdol2", class: "imgmypic2", :alt => "first slide")  %>
       <p class="mypictext">2단계 학생테디</p>
       <p class="mypictext">리뷰수 6~10개</p>
     </div>
     <div class="col-2 mypic">
-      <%= image_tag("bear3", class: "imgmypic3", :alt => "first slide")  %>
+      <%= image_tag("gomdol3", class: "imgmypic3", :alt => "first slide")  %>
       <p class="mypictext">3단계 닥터테디</p>
       <p class="mypictext">리뷰수 11개 이상</p>
     </div>
   </div>
 </section>
 
+
+
+<script type="text/javascript">
+                  
+                  // review carousel 용 
+                  
+                   $('#reviewmodalCarousel').carousel({
+                    interval: 10000
+                  })
+                  
+                  $('.carousel .carousel-item').each(function(){
+                      var next = $(this).next();
+                      if (!next.length) {
+                      next = $(this).siblings(':first');
+                      }
+                      next.children(':first-child').clone().appendTo($(this));
+                      
+                      if (next.next().length>0) {
+                      next.next().children(':first-child').clone().appendTo($(this));
+                      }
+                      else {
+                        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                      }
+                  }); 
+                  
+                  // review carousel용 끝
+                  
+                  </script>

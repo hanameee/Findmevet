@@ -11,17 +11,22 @@ Rails.application.routes.draw do
     post '/like' => 'likes#like_toggle'
   end
 
-  resources :conversations, only: [:index, :create] do
-    resources :messages, only: [:index, :create]
+  resources :conversations, only: [:index, :create, :show] do
+    resources :messages, only: [:index, :create, :show]
   end
   
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   
   resources :users
-  
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :examinations
 
   get '/search' => 'pages#search'
-
-
+  get '/searchreview' => 'pages#searchreview'
+  get 'searchstar' => 'pages#searchstar'
+  
+  get '/introduction' => 'pages#introduction'
+  resources :pages
+  # devise_for :users do
+  # get ':user/edit-profile' => 'devise/registration#edit', :as => :edit_user_profile
+  # end
 end

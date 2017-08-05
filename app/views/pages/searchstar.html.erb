@@ -1,0 +1,122 @@
+
+<!-- 기본구조
+
+<<row>>
+
+1. indexleft
+ 1-1 searchbar
+ 1-2 searchfilters
+ 1-3 hospitallist
+    
+2. indexright
+ 2-1 indexmap 
+
+-->
+
+
+  
+  
+  <div class="row"> <!-- 페이지 전체 row --> 
+
+    <div class="col-xl-5 col-md-5" id="indexleft">
+        <div class= "searchbar">
+        <div class="row"><!-- searchinput, fa-search row--> 
+            <div class="col-10" id="searchinput">
+               <%= form_tag(search_path, local: true, method: :get) do %> 
+ 
+               <%= text_field_tag(:q, nil, placeholder: 'ex- 고려대, 고려대 이구아나',data: { behavior: 'autocomplete' }) %>
+            </div>
+            <div class="col-2">
+               <%= button_tag "", type: 'submit' , class: "fa fa-search button" , placeholder: 'ex- 고려대, 고려대 이구아나' %>
+              <!--<i class="fa fa-search" aria-hidden="true" type="submit"></i>-->
+               <% end %>
+            </div>
+           
+          </div> <!-- searchinput, fa-search row 끝-->
+          <h1 class= "result"><%= @searchresult %>(으)로 총 <span class="resultnum">"<%= Vet.ransack(vtitle_cont: params[:q]).result(distinct: true).order(:vtitle).count %>" </span> 건의 결과가 있습니다.</h1>
+        </div><!-- searchbar 끝 -->
+        <ul class= "searchfilters">
+          <div class="row"><!-- searchfilter row --> 
+           <div class="col-2">
+            <li>기본순 <i class="fa fa-angle-down" aria-hidden="true"></i></li>
+           </div>
+           <div class="col-2">
+            <li>리뷰순 <i class="fa fa-angle-down" aria-hidden="true"></i></li>
+           </div>
+           <div class="col-2">
+            <li>평점순 <i class="fa fa-angle-down" aria-hidden="true"></i></li>
+           </div>
+          </div> <!-- searchfilter row 끝 -->
+        </ul><!-- searchfilters 끝 --> 
+        <div class= "hospitallist">
+          
+      <% @vetsstar.each do |vet| %>
+          
+           <div class = "hospital1">
+             
+             <div class = "hospitalimg">
+               <%= image_tag("follow1", class: "hospitalimgcontent", :alt => "first slide")  %>
+             </div> 
+             
+             <div class = "hospitaltext">
+              <div class= "hospitaltitlebar">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <a href="/hospitals/show" class="hospitaltitle"><span><%= link_to vet.vtitle, vet %></span></a> 
+                  <span class= "score "> </span>
+                  <span class= "reviewcount"> </span>
+              </div>  <!-- hospitaltitlebar 끝 --> 
+              
+              <div class= "hospitalinfo">
+                <h4 class= "address"><%= vet.address %></h4>
+                
+                <div class="indexline">
+                  <div class = "row">
+                  
+                    <div class="col-md-3 indexicon">
+                        <div class="icon">전화번호</div>
+                    </div>
+                    <div class= "col-md-9 indexicontext">
+                        <div class="telephone"><%= vet.telephone %> </div>
+                    </div>
+                
+                </div> <!-- row 끝 -->
+                </div> <!-- indexline 끝 -->
+                <div class="indexline">
+                  <div class= "row">
+                
+                    <div class="col-md-3 indexicon">
+                        <div class="icon">세부사항</div>
+                    </div>
+                    <div class="col-md-9 indexicontext">
+                        <div class="time"><%= vet.description %>
+                        </div>
+                    </div>
+                  </div> <!-- row 끝 -->
+                </div> <!-- indexline 끝 -->
+              </div>  <!-- hospitalinfo 끝 --> 
+             </div>  <!-- hospitaltext 끝 --> 
+             
+           </div> <!-- hospital1 끝 --> 
+        
+            <% end %>
+            
+            
+           <div class= "arrows">
+            
+           
+   <%= paginate @vets %>
+
+        </div>  <!-- arrows 끝 --> 
+        </div><!-- hospitallist 끝 -->
+    </div><!-- indexleft 끝 --> 
+
+    <div class="col-xl-7 col-md-7 col-xs-12" id="indexright">
+     <div class="indexmap" data-turbolinks="false">
+     </div>
+    </div> <!-- indexright 끝 --> 
+
+  </div> <!-- 페이지 전체 row 끝 --> 
+  
+  
+
+<!-- hospital/index -->

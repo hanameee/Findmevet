@@ -15,6 +15,12 @@ class ConversationsController < ApplicationController
 
 		redirect_to conversation_messages_path(@conversation)
 	end
+	
+	def show
+		@vet = Vet.find(params[:id])
+		@users = User.all
+		@conversations = Conversation.involving(current_user)
+	end
 
 	private
 

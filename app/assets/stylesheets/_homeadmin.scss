@@ -1,0 +1,76 @@
+//끝. 들여쓰기 하면 됨 
+
+@import 'variables';
+
+
+#admincontainer {
+  width: 700px;
+  margin: auto;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: #ececec;
+  
+  .titlebar {
+    width: 200px;
+    height: 40px;
+  }
+  
+  
+  .addpic {
+    float: right;
+    text-align: right;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    color: $lightgrey;
+    
+  }
+
+  .adminhospitaltext {
+    min-height : 50%;//260px;
+    background-color: white;;
+    padding: 3%;
+  
+    .hospitaltitle {
+      margin-bottom: 5%;//15px;
+      font-size: 2.5rem; //30px
+      }
+      
+     .hospitalinfo {
+    
+      .editicon {
+        padding: 0;
+        
+      .fa-pencil {
+        text-align: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+       }
+       
+      }
+
+       
+    .pricelist {
+      
+     .addprice {
+       float: right;
+       font-size: 1.8rem;
+       color: $lightgrey;
+     }
+    
+    .price {
+      text-align: right;
+    }
+      
+    }
+    
+     
+       .address, .telephone, .homepage, .amenities, .moreinfo, .pricetitle, .price , .reviewmore {
+         font-size: 1rem;
+         line-height: 1.8rem;
+        }
+
+    }
+  }
+}
+
+  

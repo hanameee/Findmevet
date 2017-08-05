@@ -1,0 +1,31 @@
+<div class="gnb">
+<!-- .logo는 네비게이션 좌측 로고 구역 -->
+  <a href="/"><div class="logo"></div></a>
+  <!-- ul은 네비게이션 우측 버튼들 구역 -->
+  <ul>
+    <!-- 1)a onmouseout onmousemove 는 뭐지? 서로 다른 img를 링크했네?
+    2) img name은 뭐지??-->
+<% if user_signed_in? %>
+  <li><strong><%=current_user.name%></strong>님</li>
+    <% if current_user.role == "일반고객" %>
+      <li><span>  <%= link_to '마이페이지', user_path(current_user), :class => 'navbar-link' %></li>
+    <% elsif current_user.role == "수의사" %>
+      <% if current_user.vets.count > 0 %>
+        <li><span>  <%= link_to '마이페이지', edit_vet_path(current_user.vets[0].id), :class => 'navbar-link' %></li>
+      <% else %>
+        <li><span>  <%= link_to '마이페이지', new_vet_path(current_user), :class => 'navbar-link' %></li>
+      <% end %>
+    <% end %>    
+    <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></li>
+<% else %>
+  <li><span><%= link_to "회원가입", new_user_registration_path, :class => 'navbar-link'  %></li>
+  <li><%= link_to "로그인", new_user_session_path, :class => 'navbar-link'  %></span></li>
+<% end %>   
+  <li><span><%= link_to '서비스소개', introduction_path, :class => 'navbar-link' %></li>
+  </ul>
+  
+    <!--<form action="/hospitals/show">-->
+    <!--  <input type="search" value="" placeholder="리뷰를 작성할 병원명을 입력해주세요 :D" />-->
+    <!--</form>-->
+  </div>
+</div>

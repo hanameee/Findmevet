@@ -85,7 +85,7 @@ gem "simple_calendar", "~> 2.0"
 
 # image upload
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'mini_magick'
 
 # Pagination
@@ -96,3 +96,7 @@ gem 'redis'
 
 #mailgun
 gem 'mailgun-ruby', '~> 1.1', '>= 1.1.6'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end

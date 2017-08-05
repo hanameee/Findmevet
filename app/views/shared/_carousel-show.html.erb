@@ -1,0 +1,56 @@
+<div class="container text-center my-3">
+    <div class="row mx-auto my-auto">
+        <div id="showCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <%= image_tag("vet01.jpg" ,class: "d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("vet02.jpg" ,class:"d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("vet03.jpg" ,class:"d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("vet04.jpg" ,class:"d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("vet05.jpg" ,class:"d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("vet06.jpg" ,class:"d-block col-4 img-fluid practiceimg", :alt => "first slide") %>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#showCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#showCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+$('#showCarousel').carousel({
+  interval: 10000
+})
+
+$('.carousel .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    if (next.next().length>0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+    }
+    else {
+      $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+    }
+});
+
+</script>
