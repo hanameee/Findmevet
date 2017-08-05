@@ -10,10 +10,18 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :birth_date, presence: true
   
-  has_many :vets
-  has_many :reviews
-  has_many :reservations
-
+  has_many :vets, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_many :examinations, dependent: :destroy
+  has_many :likes
+  has_many :liked_vets, through: :likes, source: :vet
+  
+  def is_like?(vet)
+    Like.find_by(user_id: self.id, vet_id: vet.id).present?
+  end
+  
+  
   
   def self.new_with_session(params, session)
     super.tap do |user|

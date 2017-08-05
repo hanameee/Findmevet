@@ -4,7 +4,7 @@
 		<!-- Image -->
 		<div class="row">
 			<div class="col-md-12">
-				<%= image_tag @photos[0].image.url(), class: "img-responsive" if @photos.length > 0 %>
+				<%= image_tag @vet.picture.url if @vet.picture? %>
 			</div>
 		</div>
 
@@ -56,6 +56,18 @@
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="amenities">
+												<td>
+						<% if current_user.is_like?(@vet) %>
+								<%= link_to vet_like_path(@vet), method: :post do %>
+								<i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+							<% end %>
+						<% else %>
+							<%= link_to vet_like_path(@vet), method: :post do %>
+								<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+							<% end %>
+						<% end %>
+					</td>
+							<td><%= @vet.likes.size %></td>
 							<li class="<%= 'text-line-through' if !@vet.hotel %>">호텔</li>
 							<li class="<%= 'text-line-through' if !@vet.supply %>">용품 판매</li>
 							<li class="<%= 'text-line-through' if !@vet.hour %>">24시간 진료</li>
@@ -114,7 +126,7 @@
 				<h3> Reviews <span id="average_rating"></span> (<%= @reviews.count %>) </h3>
 				<div class="container">
 					<div>
-						<%= render 'reviews/form' if !@hasReview %>
+						<%= render 'reviews/form' %>
 					</div>
 					<div>
 						<%= render 'reviews/list' %>
@@ -122,6 +134,10 @@
 				</div>
 			</div>
 		</div>
+
+	</div>
+</div>
+		
 		
 		<!-- Google Map -->
 		<div class="row">
@@ -150,8 +166,7 @@
 		</div>
 
 
-	</div>
-</div>
+
 
  <script>
 		$('#average_rating').raty({
@@ -160,3 +175,6 @@
 	    score: <%= @vet.average_rating %>
 	  })
  </script>
+ 
+ 
+ 

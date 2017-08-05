@@ -8,9 +8,10 @@
     <hr>
     
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-2">
+        <%= image_tag r.picture.url if r.picture? %>
       </div>
-      <div class="col-md-11">
+      <div class="col-md-10">
         <div>
           <strong><%= r.user.name %> <div id="stars_<%= r.id %>"></div> </strong>
           <span class="pull-right">

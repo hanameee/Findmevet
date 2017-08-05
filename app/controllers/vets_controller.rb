@@ -1,13 +1,14 @@
 class VetsController < ApplicationController
   before_action :set_vet, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show]
+  
   def index
     @vets = current_user.vets
   end
 
   def show
-    @photos = @vet.photos
     
+    @photos = @vet.photos
     @reviews = @vet.reviews
     @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
   end
@@ -61,7 +62,7 @@ class VetsController < ApplicationController
     end
     
     def vet_params
-      params.require(:vet).permit(:vtitle, :postcode, :address, :address_detail, :telephone, :description, :hour, :hotel, :beauty, :supply, :homepage, :user_id)
+      params.require(:vet).permit(:vtitle, :postcode, :address, :address_detail, :telephone, :description, :hour, :hotel, :beauty, :supply, :homepage, :user_id, :picture)
     end
     
 end

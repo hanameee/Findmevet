@@ -1,0 +1,31 @@
+<%= form_for([@user, current_user.examinations.new]) do |f| %>
+  <% if examination.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(examination.errors.count, "error") %> prohibited this examination from being saved:</h2>
+
+      <ul>
+      <% examination.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :hname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exdate %>
+    <%= f.date_select :exdate %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :symptom %>
+    <%= f.text_field :symptom %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,203 @@
+<header class="pic">
+  <div class="mypage">
+    <div class="row mypage-header">
+      <div class="col-2">
+        <% case current_user.reviews.count %>
+        <% when 0 .. 5 %>
+          <%= image_tag("bear1", class: "imgmypicheader", :alt => "first slide")  %>
+        <% when 6 .. 10 %>
+          <%= image_tag("bear2", class: "imgmypicheader", :alt => "first slide")  %>
+        <% else %>
+          <%= image_tag("bear3", class: "imgmypicheader", :alt => "first slide")  %>
+        <% end %>
+      </div>
+      <div class="col-3" id="mypage_info"><!--수정버튼을 눌렀을 때 개인정보 수정 가능하게 하기-->
+        <p class="username">김예은님(yaellowtube)</p>
+        <p class="birthday">1995.10.14.</p>
+        <p class="phonenumber">전화번호: 01012345678</p>
+        <p class="email">이메일: yaellowtube@mail.com</p>
+      </div>
+      <div class= "col-1">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">수정</button>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">개인정보 수정하기</h4>
+              </div>
+              <div class="modal-body">
+                <p>이름</p>
+                 <textarea class="form-control input-lg" autofocus="" placeholder="김예은"></textarea>
+                 <br>
+                 <p>생년월일</p>
+                 <textarea class="form-control input-lg" autofocus="" placeholder="1996/03/23"></textarea>
+                 <br>
+                 <p>전화번호</p>
+                 <textarea class="form-control input-lg" autofocus="" placeholder="0101010101"></textarea>
+                 <br>
+                 <p>이메일</p>
+                 <textarea class="form-control input-lg" autofocus="" placeholder="gmail.com"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>  
+  </div>
+</header>
+
+
+<div class="sec-top">
+  <div class="row">
+    <div class="col-6 mypageleft">
+      <div class="box1">
+      	<p class="follow">내가 등록한 리뷰</p>
+        <a href= "/hospitals/show">
+      	<span class="reviewname">도토 동물병원</span> 	
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i> 
+      	<span class="reviewdate">17-01-10</span> </a>
+      	<div class="row">
+      	  <div class="col-9">
+      	    <h3 class="review1">도토 동물병원은 최고의 동물병원이다. 만족스러웠다. </h3>
+          </div>
+      	  <div class="col-3">
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
+            </button>      	     
+            <%= render 'shared/modal-review' %>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true">삭제</span>
+            </button>
+          </div>
+      	</div>
+      	
+        <a href= "/hospitals/show" >
+      	<span class="reviewname">잠보 동물병원</span> 	
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<span class="reviewdate">17-04-23</span> </a>
+      	<div class="row">
+      	  <div class="col-9">
+      	    <h3 class="review1">좀 더 꼼꼼히 봐주셨으면 좋았을텐데 어쩌고 저쩌고. </h3>
+          </div>
+      	  <div class="col-3">
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
+            </button>      	     
+            <%= render 'shared/modal-review' %>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true">삭제</span>
+            </button>
+          </div>
+      	</div>
+
+      	<a href= "/hospitals/show" >
+      	<span class="reviewname">사랑 동물병원</span> 	
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<i class="fa fa-star" aria-hidden="true"></i>
+      	<span class="reviewdate">17-07-15</span> </a> 
+      	<div class="row">
+      	  <div class="col-9">
+      	    <h3 class="review1">사랑 동물병원은 최고의 동물병원이다. 만족스러웠다. </h3>
+          </div>
+      	  <div class="col-3">
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#seemorereview">더보기</span>
+            </button>      	     
+            <%= render 'shared/modal-review' %>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="modal" data-target="#editreviewModal">수정</span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true">삭제</span>
+            </button>
+          </div>
+      	</div>
+      	
+      </div>
+    </div>
+
+    <div class="col-6 mypageright">
+      <div class="box2">
+       
+        <p class="follow">내가 팔로우한 병원</p>
+        <div class="following_hospitals">
+          <div class="row" id="follows">
+            <div class="col-3 follow1">
+              <%= image_tag("follow1", class: "imgfollow", :alt => "first slide")  %>
+              <p class="followname">
+                <a class="followname" href="/hospitals/index" role="button">도토 동물병원</a>
+              </p>
+            </div>
+            <div class="col-3 follow2">
+              <%= image_tag("follow2", class: "imgfollow", :alt => "first slide")  %>
+              <p class="followname">
+                <a class="followname" href="/hospitals/index" role="button">잠보 동물병원</a>
+              </p>
+            </div>
+            <div class="col-3 follow3">
+              <%= image_tag("follow3", class: "imgfollow", :alt => "first slide")  %>
+              <p class="followname">
+                <a class="followname" href="/hospitals/index" role="button">멋쟁 동물병원</a>
+              </p>
+            </div>
+            <div class="col-3 follow4">
+              <%= image_tag("follow4", class: "imgfollow", :alt => "first slide")  %>
+              <p class="followname">
+                <a class="followname" href="/hospitals/index" role="button">사랑 동물병원</a>
+              </p>
+            </div>
+          </div>
+        </div> 
+        
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<section class="sec-bottom">
+  <p class="sectitle">리뷰를 작성하여 테디의 꿈을 이뤄주세요!</p>
+  <div class="row mypage-section">
+    <div class="col-2 mypic">
+      <%= image_tag("bear1", class: "imgmypic1", :alt => "first slide")  %>
+      <p class="mypictext">1단계 아기테디</p>
+      <p class="mypictext">리뷰수 0~5개</p>
+    </div>
+    <div class="col-2 mypic">
+      <%= image_tag("bear2", class: "imgmypic2", :alt => "first slide")  %>
+      <p class="mypictext">2단계 학생테디</p>
+      <p class="mypictext">리뷰수 6~10개</p>
+    </div>
+    <div class="col-2 mypic">
+      <%= image_tag("bear3", class: "imgmypic3", :alt => "first slide")  %>
+      <p class="mypictext">3단계 닥터테디</p>
+      <p class="mypictext">리뷰수 11개 이상</p>
+    </div>
+  </div>
+</section>
+

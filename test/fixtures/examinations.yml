@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  hname: MyString
+  symptom: MyString
+  exdate: 2017-08-04
+
+two:
+  user: two
+  hname: MyString
+  symptom: MyString
+  exdate: 2017-08-04

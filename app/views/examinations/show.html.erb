@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @examination.hname %>
+</p>
+
+<p>
+  <strong>symptom:</strong>
+  <%= @examination.symptom %>
+</p>
+
+<p>
+  <strong>Examine time:</strong>
+  <%= @examination.exdate %>
+</p>
+
+<%= link_to 'Edit', edit_examination_path(@examination) %> |
+<%= link_to 'Back', examinations_path %>

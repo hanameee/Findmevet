@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :vets do
     resources :reservations, only: [:create, :destroy]
     resources :reviews, only: [:create, :destroy]
+    post '/like' => 'likes#like_toggle'
   end
   
   resources :conversations, only: [:index, :create] do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   end
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :users
   
 
   get '/search' => 'pages#search'

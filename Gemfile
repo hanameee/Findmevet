@@ -85,3 +85,12 @@ gem 'gravatarify'
 # 위경도 변환
 gem 'geocoder'
 
+gem "simple_calendar", "~> 2.0"
+
+# image upload
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+
+# Pagination
+gem 'kaminari'

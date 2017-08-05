@@ -10,13 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802013542) do
+ActiveRecord::Schema.define(version: 20170805023132) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "examinations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "hname"
+    t.string   "symptom"
+    t.date     "exdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_examinations_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "vet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["vet_id"], name: "index_likes_on_vet_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -53,11 +72,15 @@ ActiveRecord::Schema.define(version: 20170802013542) do
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
-    t.integer  "star",       default: 1
+    t.integer  "star",         default: 1
     t.integer  "vet_id"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "reviewanimal"
+    t.string   "treatment"
+    t.string   "reviewmore"
+    t.string   "picture"
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["vet_id"], name: "index_reviews_on_vet_id"
   end
@@ -120,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170802013542) do
     t.string   "address_detail"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "picture"
     t.index ["user_id"], name: "index_vets_on_user_id"
   end
 
