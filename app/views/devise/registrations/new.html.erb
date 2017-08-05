@@ -46,8 +46,15 @@
           <%= f.label :생년월일 %><br />
           <%= f.date_field :birth_date, class: "form-control", autofocus: true %>
         </div>
-        
+        <%= f.radio_button(:role, "일반고객") %>
+        <%= f.label(:role_일반고객, "일반고객") %>
+        <%= f.radio_button(:role, "수의사") %>
+        <%= f.label(:role_수의사, "수의사") %>
 
+
+
+
+        
         <div class="actions">
           <%= f.submit "가입하기", class: "btn btn-success" %>
         </div>

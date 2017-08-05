@@ -5,9 +5,19 @@ class UsersController < ApplicationController
     @reviews = current_user.reviews
   end
   
+  
+  def edit
+  end
+  
+
+  
+
+  
+  
   private
   
   def set_user
     @user = User.find(params[:id])
-  end  
+  end
+  
 end

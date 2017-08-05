@@ -12,10 +12,10 @@
         <% end %>
       </div>
       <div class="col-3" id="mypage_info"><!--수정버튼을 눌렀을 때 개인정보 수정 가능하게 하기-->
-        <p class="username">김예은님(yaellowtube)</p>
-        <p class="birthday">1995.10.14.</p>
-        <p class="phonenumber">전화번호: 01012345678</p>
-        <p class="email">이메일: yaellowtube@mail.com</p>
+        <p class="username"><%= current_user.name%>님</p>
+        <p class="birthday"><%= current_user.birth_date %></p>
+        <p class="phonenumber">전화번호: <%= current_user.phone_number%></p>
+        <p class="email">이메일: <%= current_user.email %></p>
       </div>
       <div class= "col-1">
         <!-- Trigger the modal with a button -->

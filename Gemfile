@@ -65,10 +65,6 @@ gem 'rolify'
 # 모델의 인스턴스 조작이 가능한 관리자 페이지 생성
 gem 'activeadmin'
 
-# 이미지 업로드 및 사이즈 조절
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog-aws'
 
 # 검색 기능
 gem 'ransack'
@@ -94,3 +90,9 @@ gem 'mini_magick'
 
 # Pagination
 gem 'kaminari'
+
+# Redis server
+gem 'redis'
+
+#mailgun
+gem 'mailgun-ruby', '~> 1.1', '>= 1.1.6'
