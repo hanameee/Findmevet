@@ -41,7 +41,7 @@
             <div class="main-item grow">
               <%= image_tag("vet01.jpg") %>
               <div class="main-item-cover">
-                <p class="cover-title"><%= vet.vtitle %></p>
+                <%= link_to "#{vet.vtitle}", vet_path(vet), class: 'cover-title' %>
                 <p class="cover-info">
                   <i class="fa fa-star" aria-hidden="true"></i> 
                   <span class= "score"><%= vet.average_rating %></span>

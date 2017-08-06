@@ -11,9 +11,9 @@
       <li><span>  <%= link_to '마이페이지', user_path(current_user), :class => 'navbar-link' %></li>
     <% elsif current_user.role == "수의사" %>
       <% if current_user.vets.count > 0 %>
-        <li><span>  <%= link_to '마이페이지', edit_vet_path(current_user.vets[0].id), :class => 'navbar-link' %></li>
+        <li><span>  <%= link_to '병원 정보 관리', edit_vet_path(current_user.vets[0].id), :class => 'navbar-link' %></li>
       <% else %>
-        <li><span>  <%= link_to '마이페이지', new_vet_path(current_user), :class => 'navbar-link' %></li>
+        <li><span>  <%= link_to '병원 정보 관리', new_vet_path(current_user), :class => 'navbar-link' %></li>
       <% end %>
     <% end %>    
     <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete, :class => 'navbar-link'%></li>

@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
       message_params = { from: "doctor-teddy@example.com",
                          to:   current_user.email,
                          subject:  "#{current_user.name}님의 병원 진료 예약이 완료되었습니다.",
-                         text:    "예약 시간은 #{@reservation.reserved_date}입니다. \n 사이트로 연결하기 위해서는 #{@url}을 클릭해주세요. \n Dr.Teddy를 이용해주셔서감사합니다."
+                         text:    "예약 요청 시간은 #{@reservation.reserved_date}입니다. \n 예약이 확정될 경우 #{@reservation.vet.vtitle}에서 고객님께 연락할 예정입니다. \n Dr.Teddy를 이용해주셔서감사합니다."
                        }
 
       # Send your message through the client
