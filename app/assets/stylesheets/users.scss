@@ -73,18 +73,18 @@ header {
 //section1
 
 #sec {
-    background-color: #ececec;
+    background-color: #f8f6e2;
 }
 
 .mypageleft {
     height: 300px;
-    background-color: #ececec;
+    background-color: #f8f6e2;
     padding-right: 0;
 }
 
 .mypageright {
     height: 300px;
-    background-color: #ececec;
+    background-color: #f8f6e2;
     padding-left: 0;
     padding-right: 0;
 }
@@ -179,34 +179,18 @@ header {
 
 
 //section2
-
-.sectitle {
-    padding-top: 100px;
-    text-align: center;
-    font-size: 15px;
+.sec-bottom1 {
+    background-color: #f8f6e2;
+    height: 600px;
 }
 
-.imgmypic1 {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-left: 15%;
+.sec-bottom2 {
+    background-color: #f8f6e2;
 }
 
-.imgmypic2 {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-left: 15%;
-}
-
-.imgmypic3 {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-left: 15%;
-}
-
-.sec-bottom {
-    height: 440px;
-    background-color: #ececec;
+.mypage_character {
+    height: 100%;
+    width: 100%;
 }
 
 .mypage-section {
@@ -214,13 +198,6 @@ header {
     flex-direction:row;
     justify-content:center;
 }
-
-.mypictext {
-    font-size: 12px;
-    text-align: center;
-    margin-bottom: 0;
-}
-
 
 .mypage-noreview {
     font-size: 20px;

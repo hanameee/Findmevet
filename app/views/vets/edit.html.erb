@@ -9,6 +9,14 @@
  2-2 hospitalinfo
 -->
 
+<div class= "admin_wrap"> 
+ <div class="intro">
+  <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+  <div class="introslogan">
+    <p>병원 정보 수정</p>
+  </div>
+</div>
+
 	<%= form_for @vet do |f| %>
  
   <div id='admincontainer'>
@@ -31,21 +39,24 @@
       
        <div class= "hospitalinfo">
                 <div class= "row">
-                 <div class= "col-xl-6 col-md-6 infolist">
+                 <div class= "infolist">
                   <div class="indexline"> 
                     <div class= "basicinfohead">기본정보</div>
-               
+                     <br>
                     </div>
                   <div class="indexline">
                      <div class= "row">
-                       <div class= "col-3 indexicon">
-                          <div class= "icon">병원주소</div>
+                       <div class= "col-2 indexicon">
+                          <div class= "altericon">병원주소</div>
                        </div>
-                       <div class= "col-9 indexicontext">
+                       <div class= "col-10 indexicontext">
                           <div class = "address">	
                           <div class="form-group">
+                           
                      					  <%= f.text_field :postcode, class: "form-control postcodify_postcode5", placeholder: "주소를 검색해주세요", autofocus: true, value: "" %>
+                     			   <div style="text-align:center">
                      			    <%= f.button "검색", id: "postcodify_search_button", type: "button" %><br />
+                     			    </div>
                      			    <%= f.text_field :address, class: "form-control postcodify_address", autofocus: true, value: "" %>
                      			    <%= f.text_field :address_detail, class: "form-control postcodify_details", autofocus: true, value: "" %>
 				                      </div>
@@ -56,10 +67,10 @@
                   </div> 
                   <div class="indexline">
                      <div class= "row">
-                       <div class= "col-3 indexicon">
-                          <div class= "icon">병원전화</div>
+                       <div class= "col-2 indexicon">
+                          <div class= "altericon">병원전화</div>
                        </div>
-                       <div class= "col-9 indexicontext">
+                       <div class= "col-10 indexicontext">
                           <div class = "telephone">
                             <div class="form-group">
 					                        <%= f.text_field :telephone, placeholder: "전화번호를 입력해주세요", class: "form-control" %>
@@ -72,10 +83,10 @@
                   
                   <div class="indexline">
                      <div class= "row">
-                       <div class= "col-3 indexicon">
-                          <div class= "icon">특이사항</div>
+                       <div class= "col-2 indexicon">
+                          <div class= "altericon">특이사항</div>
                        </div>
-                       <div class= "col-9 indexicontext">
+                       <div class= "col-10 indexicontext">
                          <div class = "amenities checks">	
                           <div class="form-group" id="f-check">
                       					<p class="f-check">
@@ -100,10 +111,10 @@
                     </div> 
                   <div class="indexline">
                      <div class= "row">
-                       <div class= "col-3 indexicon">
-                          <div class= "icon">추가정보</div>
+                       <div class= "col-2 indexicon">
+                          <div class= "altericon">추가정보</div>
                        </div>
-                       <div class= "col-9 indexicontext">
+                       <div class= "col-10 indexicontext">
                           <div class = "moreinfo">
                            <div class="form-group">
 					                       <%= f.text_area :description, rows: 5, placeholder: "병원을 소개해주세요", class: "form-control" %>
@@ -115,10 +126,10 @@
                     </div>
                   <div class="indexline">
                      <div class= "row">
-                       <div class= "col-3 indexicon">
-                          <div class= "icon">홈페이지</div>
+                       <div class= "col-2 indexicon">
+                          <div class= "altericon">홈페이지</div>
                        </div>
-                       <div class= "col-9 indexicontext">
+                       <div class= "col-10 indexicontext">
                           <div class = "time">
                            <div class="form-group">
 					                       <%= f.text_field :homepage, placeholder: "홈페이지/블로그 주소를 입력해주세요", class: "form-control" %>
@@ -129,8 +140,12 @@
                      </div>
                     </div> 
                  </div>
-            
-                 <div class= "col-md-6 col-xs-4 pricelist"> 
+                  </div>
+                  <br>
+                  <br>
+                  
+                  <div class="row">
+                 <div class= "pricelist"> 
                   <div class="indexline"> 
                    <!--<div class="col-10 offset-1">-->
                     <div class= "basicinfohead">가격정보
@@ -144,10 +159,10 @@
                 
                    <div class="indexline"> 
                     <div class= "row">
-                     <div class= "col-7 offset-1">
+                     <div class= "col-8 offset-1">
                       <div class= "pricetitle">고양이 기본진료</div>
                      </div>
-                     <div class= "col-3">
+                     <div class= "col-2">
                       <div class= "price">5000</div>
                      </div>
                        <div class="col-1 editicon">
@@ -160,10 +175,10 @@
                    
                    <div class="indexline"> 
                     <div class= "row">
-                     <div class= "col-7 offset-1">
+                     <div class= "col-8 offset-1">
                       <div class= "pricetitle">강아지 초음파</div>
                      </div>
-                     <div class= "col-3">
+                     <div class= "col-2">
                       <div class= "price">20000</div>
                      </div>
                       <div class="col-1 editicon">
@@ -174,10 +189,10 @@
                    
                    <div class="indexline"> 
                     <div class= "row">
-                     <div class= "col-7 offset-1">
+                     <div class= "col-8 offset-1">
                       <div class= "pricetitle">강아지 피부병 검사</div>
                      </div>
-                     <div class= "col-3">
+                     <div class= "col-2">
                       <div class= "price">14000</div>
                      </div>
                        <div class="col-1 editicon">
@@ -188,10 +203,10 @@
                    
                    <div class="indexline"> 
                     <div class= "row">
-                     <div class= "col-7 offset-1">
+                     <div class= "col-8 offset-1">
                       <div class= "pricetitle">강아지 카테터</div>
                      </div>
-                     <div class= "col-3">
+                     <div class= "col-2">
                       <div class= "price">115000</div>
                      </div>
                        <div class="col-1 editicon">
@@ -202,10 +217,10 @@
                    
                    <div class="indexline"> 
                     <div class= "row">
-                     <div class= "col-7 offset-1">
+                     <div class= "col-8 offset-1">
                       <div class= "pricetitle">강아지 입원</div>
                      </div>
-                     <div class= "col-3">
+                     <div class= "col-2">
                       <div class= "price">50000</div>
                      </div>
                        <div class="col-1 editicon">
@@ -246,6 +261,7 @@
       </div> <!-- hospitalinfo 끝 -->
     </div> <!-- adminhospitaltext 끝 -->
   </div> <!-- admincontainer 끝 -->
+</div>  
 
 
   <script type="text/javascript">

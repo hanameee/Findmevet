@@ -1,16 +1,48 @@
 @import 'variables';
 
+.altericon {
+  border-right: solid 1px;
+  border-color: $lightgrey;
+  line-height: 1.8rem;
+  
+}
+
+// .modal {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%; 
+// }
+
+
+.modal-content, .modal-body, .modal-header, .modal-footer {
+  
+  margin:0;
+}
+
+.modal-body, .modal-content {
+  min-height: 500px;
+  // width: 600px;
+}
+
+.modal-header, .modal-footer {
+  background-color: bisque;
+  color: #153840;
+  // width: 600px;
+}
+
 .modal-open {
     overflow: hidden;
+    margin:auto;
+  
 }
 
 .modal-header {
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
-  background-color: $lightpink;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
   
   .close {
     float: right;
@@ -23,17 +55,17 @@
   display:flex;
   flex-direction: row;
   justify-content:center;
-  background-color: $lightpink;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  
+  // border-bottom-left-radius: 15px;
+  // border-bottom-right-radius: 15px;
 }
 
 .modal-content {
-    -webkit-border-radius: 15px !important;
-    -moz-border-radius: 15px !important;
-    border-radius: 15px !important; 
-    border: solid 5px;
-    border-color: white;
+    // -webkit-border-radius: 20px !important;
+    // -moz-border-radius: 20px !important;
+    // border-radius: 20px !important; 
+    // border: solid 5px;
+    // border-color: rosybrown;
 
   
 .form-control {
@@ -81,9 +113,10 @@
   
 .reviewModalhead {
   height: 40px;
+  text-align: center;
   
 .seestars {
-  float: right;
+  // float: right;
   color: $staryellow;
   font-size: 1.5rem;
 }

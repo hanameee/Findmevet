@@ -1,38 +1,78 @@
-<div class="row">
-	
-	<div class="col-md-3 text-center">
-		<strong><%= @other.name %></strong>
-		<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
-	</div>
+<div class="messagecontainerbody">
+<div class="intro">
+  <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+  <div class="introslogan">
+    <p>1:1 채팅</p>
+  </div>
+</div>
 
+<div class="messagecontainer">
+
+  <div class="col-md-3">
+  	<div class="messagecontainerleft">
+  				
+   	<div class="othername">
+   		<div class="row">
+   		
+   		<div class=" col-5 othernameleft">
+   			<div class="indexline">
+   				<div class="title">병원인</div> 
+   			</div>	
+   			<div class="indexline">
+   				<div class="title">반려인</div>
+   			</div>	
+   		</div>
+   		<div class="col-7 othernameright">
+   			<div class="indexline"><%= @other.name %> </div>
+   			<div class="indexline">	<%=current_user.name%></div>
+   				
+   		</div>
+	   </div>
+		
+		</div>		 
+
+  	</div>
+  </div>
 	<div class="col-md-9">
+		
+	
 		
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Conversation with <%= @other.name %>
+			
 			</div>
 			<div class="panel-body">
 				<div class="container">
 					
+		<div id="chat">
+			<%= render 'messages' %>
+		</div>
+					
 					<%= form_for [@conversation, @conversation.messages.new] do |f| %>
-						<div class="form-group">
-							<%= f.text_area :content, id: "new_message", placeholder: "Add a personal message", class: "form-control" %>
+					
+					<div class="row sendbar">
+					 <div class="col-10">
+						<div class="form-group sendbox">
+							<%= f.text_area :content, id: "new_message", placeholder: "메세지를 보내보세요!", class: "form-control", rows:"4" %>
 						</div>
+						</div>
+						
 						<%= f.hidden_field :user_id, value: current_user.id %>
-
+           <div class="col-2">
 						<div class="actions">
-							<%= f.submit "Send Message", class: "btn btn-primary" %>
+							<%= f.submit "보내기", class: "btn btn-secondary" %>
 						</div>
+					 </div>	
+					</div>	
 					<% end %>
-
+				
 				</div>
 			</div>
 		</div>
 
-		<div id="chat">
-			<%= render 'messages' %>
-		</div>
+	
 
 	</div>
 
+</div>
 </div>

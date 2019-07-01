@@ -18,14 +18,28 @@
         </div>
       </div>
       <!--여기까지가 header-->
-      <div class="gstest" id="pagedown">
+      <div id="pagedown1"></div>     
+      <div class="gstest">
       <%= form_tag(search_path, local: true, method: :get) do %>
       <%= text_field_tag(:q, nil, data: { behavior: 'autocomplete' }, id: 'main_searchbar', placeholder: '지역,병원명 등을 검색해보세요!') %>
       <%= button_tag '병원검색', type: 'submit' do %>
       <div>병원검색 <i class="fa fa-search aria-hidden="true""></i></div>
       <% end %>
       <% end %>
-      </div>      
+      </div>
+      <div id="pagedown2"></div>
+      <div class="main-img1">
+        <%= image_tag("mainimg_1.png", class: "mainimg1") %>
+      </div>
+      <div class="soso"></div>
+      <div id="pagedown3"></div>
+      <div class="main-img2">
+        <%= image_tag("mainimg_2.png", class: "mainimg2") %>
+      </div>
+    <div id="pagedown4"></div>       
+      <div class="main-img3">
+        <%= image_tag("mainimg_3.png", class: "mainimg3") %>
+      </div>    
     <div class="container" id="main-container">
       <div class="main-recent">
         <div class="row">
@@ -50,61 +64,6 @@
             </div>
           </div>  
           <% end %>
-          <!--<div class="col-4">-->
-          <!--  <div class="main-item grow">-->
-          <!--    <div class="main-item-cover">-->
-          <!--      <p class="cover-title">예은동물병원</p>-->
-          <!--      <p class="cover-info">-->
-          <!--        <i class="fa fa-star" aria-hidden="true"></i> -->
-          <!--        <span class= "score"> 4.5 </span>-->
-          <!--      </p>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div> -->
-          <!--<div class="col-4">-->
-          <!--  <div class="main-item grow">-->
-          <!--    <div class="main-item-cover">-->
-          <!--      <p class="cover-title">해나동물병원</p>-->
-          <!--      <p class="cover-info">-->
-          <!--        <i class="fa fa-star" aria-hidden="true"></i> -->
-          <!--        <span class= "score"> 4.5 </span>-->
-          <!--      </p>-->
-          <!--    </div>-->
-          <!--  </div>  -->
-          <!--</div> -->
-          <!--<div class="col-4">-->
-          <!--  <div class="main-item grow">-->
-          <!--    <div class="main-item-cover">-->
-          <!--      <p class="cover-title">경민동물병원</p>-->
-          <!--      <p class="cover-info">-->
-          <!--        <i class="fa fa-star" aria-hidden="true"></i> -->
-          <!--        <span class= "score"> 4.5 </span>-->
-          <!--      </p>-->
-          <!--    </div>-->
-          <!--  </div>       -->
-          <!--</div>  -->
-          <!--<div class="col-4">-->
-          <!--  <div class="main-item grow">-->
-          <!--    <div class="main-item-cover">-->
-          <!--      <p class="cover-title">윤석동물병원</p>-->
-          <!--      <p class="cover-info">-->
-          <!--        <i class="fa fa-star" aria-hidden="true"></i> -->
-          <!--        <span class= "score"> 4.5 </span>-->
-          <!--      </p>-->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div> -->
-          <!--<div class="col-4">-->
-          <!--  <div class="main-item grow">-->
-          <!--    <div class="main-item-cover">-->
-          <!--      <p class="cover-title">승모동물병원</p>-->
-          <!--      <p class="cover-info">-->
-          <!--        <i class="fa fa-star" aria-hidden="true"></i> -->
-          <!--        <span class= "score"> 4.5 </span>-->
-          <!--      </p>-->
-          <!--    </div>-->
-          <!--  </div>  -->
-          <!--</div>        -->
       </div> 
       <!--여기까지가 row --->
       </div>
@@ -116,7 +75,7 @@
 
 <script>
 // Select all links with hashes
-$('a[href="#pagedown"]')
+$('a[href*="#"]')
   // Remove links that don't actually link to anything
   .click(function(event) {
     // On-page links

@@ -1,59 +1,62 @@
 <div class="exam-wrap">
-<p id="notice"><%= notice %></p>
-  <div class="intro">
-    <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
-    <div class="introslogan">
-      <p>진료일지</p>
+  <p id="notice"><%= notice %></p>
+    <div class="intro">
+      <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+      <div class="introslogan">
+        <p>진료일지</p>
+      </div>
+    </div>
+  
+  <div class="examination_section1">
+    <div class="container">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-5">
+          <%= month_calendar(attribute: :exdate, events: @examinations) do |date, examinations| %>
+          <%= date.day %>
+          <% examinations.each do |examination| %>
+            <div>
+              <%= examination.hname %>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+    
+        <div class="col-5">
+          <section id="examlist">
+          <table>
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>증상</th>
+                <th id="tbtn"><i class="fa fa-eye" aria-hidden="true"></i></th>
+                <th id="tbtn"><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                <th id="tbtn"><i class="fa fa-trash-o" aria-hidden="true"></i></th>
+              </tr>
+            </thead>
+          <!--여기까지 tblheader-->
+            <tbody>
+              <% @examinations.each do |examination| %>
+                <tr>
+                  <td><%= examination.hname %></td>
+                  <td><%= examination.symptom %></td>
+                  <td><%= link_to '보기', examination %></td>
+                  <td><%= link_to '수정', edit_examination_path(examination) %></td>
+                  <td><%= link_to '삭제', examination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          </section>
+        </div>
+        <div class="col-1"></div>
+      </div>
     </div>
   </div>
-<hr>
-
-<div class="container">
-  <div class="row">
-  <div class="col-6">
-<%= month_calendar(attribute: :exdate, events: @examinations) do |date, examinations| %>
-  <%= date.day %>
-  <% examinations.each do |examination| %>
-    <div>
-      <%= examination.hname %>
+  
+  <div class="examination_section2">
+    <div class="col-12">
+      <div class="text-center addexam"><%= link_to '새 진료일지 추가하기', new_examination_path %></div>
     </div>
-  <% end %>
-<% end %>
+  </div>
 </div>
-
-<div class="col-6">
-<section id="examlist">
-<table>
-  <thead>
-    <tr>
-      <th>제목</th>
-      <th>증상</th>
-      <th id="tbtn"><i class="fa fa-eye" aria-hidden="true"></i></th>
-      <th id="tbtn"><i class="fa fa-pencil" aria-hidden="true"></i></th>
-      <th id="tbtn"><i class="fa fa-trash-o" aria-hidden="true"></i></th>
-    </tr>
-  </thead>
-<!--여기까지 tblheader-->
-  <tbody>
-    <% @examinations.each do |examination| %>
-      <tr>
-        <td><%= examination.hname %></td>
-        <td><%= examination.symptom %></td>
-        <td><%= link_to '보기', examination %></td>
-        <td><%= link_to '수정', edit_examination_path(examination) %></td>
-        <td><%= link_to '삭제', examination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</section>
-</div>
-<div class="col-12">
-<div class="text-center addexam"><i class="fa fa-plus-circle" aria-hidden="true"></i><%= link_to '새 진료일지 추가하기', new_examination_path %></div>
-</div>
-</div>
-<!--여기까지 row-->
-</div>
-<!--여기까지 div.container-->
-</div>
-<!--여기까지 examwrap-->

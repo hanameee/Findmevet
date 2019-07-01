@@ -18,7 +18,7 @@
   
   <div class="row"> <!-- 페이지 전체 row --> 
 
-    <div class="col-xl-5 col-md-5" id="indexleft">
+    <div class="col-xl-4 col-md-4" id="indexleft">
         <div class= "searchbar">
         <div class="row"><!-- searchinput, fa-search row--> 
             <div class="col-10" id="searchinput">
@@ -38,13 +38,13 @@
         <ul class= "searchfilters">
           <div class="row"><!-- searchfilter row --> 
            <div class="col-2">
-           <li><a href= "https://doctor-teddy-integrated-ggingmin.c9users.io/search?q=<%=params[:q]%>">기본순 <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+           <li><a href= "https://doctor-teddy-integrated-ggingmin.c9users.io/search?q=<%=params[:q]%>">기본순</a></li>
            </div>
            <div class="col-2">
-            <li><a href= "https://doctor-teddy-integrated-ggingmin.c9users.io/searchreview?q=<%=params[:q]%>">리뷰순 <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+            <li><a href= "https://doctor-teddy-integrated-ggingmin.c9users.io/searchreview?q=<%=params[:q]%>">리뷰순</a></li>
            </div>
            <div class="col-2">
-            <li>평점순 <i class="fa fa-angle-down" aria-hidden="true"></i></li>
+            <li>평점순</li>
            </div>
           </div> <!-- searchfilter row 끝 -->
         </ul><!-- searchfilters 끝 --> 
@@ -59,39 +59,21 @@
              
              <div class = "hospitaltext">
               <div class= "hospitaltitlebar">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <!--<i class="fa fa-map-marker" aria-hidden="true"></i>-->
                   <a href="/hospitals/show" class="hospitaltitle"><span><%= link_to vet.vtitle, vet %></span></a> 
-                  <span class= "score "> </span>
-                  <span class= "reviewcount"> </span>
+                  <!--<span class= "score "> </span>-->
+                  <!--<span class= "reviewcount"> </span>-->
               </div>  <!-- hospitaltitlebar 끝 --> 
               
               <div class= "hospitalinfo">
                 <h4 class= "address"><%= vet.address %></h4>
                 
-                <div class="indexline">
-                  <div class = "row">
-                  
-                    <div class="col-md-3 indexicon">
-                        <div class="icon">전화번호</div>
-                    </div>
-                    <div class= "col-md-9 indexicontext">
-                        <div class="telephone"><%= vet.telephone %> </div>
-                    </div>
-                
-                </div> <!-- row 끝 -->
-                </div> <!-- indexline 끝 -->
-                <div class="indexline">
-                  <div class= "row">
-                
-                    <div class="col-md-3 indexicon">
-                        <div class="icon">세부사항</div>
-                    </div>
-                    <div class="col-md-9 indexicontext">
-                        <div class="time"><%= vet.description %>
-                        </div>
-                    </div>
-                  </div> <!-- row 끝 -->
-                </div> <!-- indexline 끝 -->
+                <div class="none">
+                  <div class="telephone"><%= vet.telephone %> </div>
+                </div> <!-- none 끝 -->
+                <div class="none">
+                  <div class="time"><%= vet.description %></div>
+                </div> <!-- none 끝 -->
               </div>  <!-- hospitalinfo 끝 --> 
              </div>  <!-- hospitaltext 끝 --> 
              
@@ -109,7 +91,7 @@
         </div><!-- hospitallist 끝 -->
     </div><!-- indexleft 끝 --> 
 
-    <div class="col-xl-7 col-md-7 col-xs-12" id="indexright">
+    <div class="col-xl-8 col-md-8 col-xs-12" id="indexright">
         <div class="indexmap">
           <div id="map"></div>
           <script>

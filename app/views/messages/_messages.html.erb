@@ -1,14 +1,26 @@
 <% @messages.each do |message| %>
 	<div class="panel">
 		<div class="panel-body">
-			<strong><%= message.user.name %></strong>
-
-			<span class="pull-right"><%= message.message_time %></span>
-			<br>
-			<div class="row-space-2">
+		 <div class="messagebody">	
+			<div class="row">
+				<div class="col-2 messageleft">
+			<div class="messagename"><%= message.user.name %></div>
+				
+			 </div>
+		    <div class="col-8">
+			<div class="messagecontent", row="2">
 				<%= message.content %>
 			</div>
+			</div>
+		  	<div class="col-2">
+				<div class="messagetime"><%= message.message_time %></div>
+			</div>
+       </div>
+      
+			<br>
+			</div>
+		</div>	
 		</div>
-	</div>
+
 
 <% end %>

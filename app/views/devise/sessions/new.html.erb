@@ -1,26 +1,33 @@
+<div class="intro">
+  <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+  <div class="introslogan">
+    <p>로그인</p>
+  </div>
+</div>
+
 <div class="form-wrap">
 <div class="container login-container">
   <div class="row">
     <div class="col-md-6 offset-md-3 text-center align-self-center">
       <div class="reg-form" id="navform">
-      <h2>로그인을 해주세요!</h2>
-          <div class="signup__character"><%= image_tag("login-teddy.png") %></div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h3>로그인을 해주세요!</h3>
+	     <%= image_tag("character03", class: "signup_character", :alt => "first slide")  %>
+       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <div class="form-group">
-          <div class="label">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-          <%= f.label :이메일 %>
-          </div>
-          <%= f.email_field :email, class: "form-control", placeholder: "이메일을 입력해주세요", autofocus: true %>
+          <!--<div class="label">-->
+          <!--  <i class="fa fa-envelope" aria-hidden="true"></i>-->
+          <!-- f.label :이메일 -->
+          <!--</div>-->
+          <%= f.email_field :email, class: "form-control", placeholder: "이메일", autofocus: true %>
         </div>
 
         <div class="form-group">
-          <div class="label">
-            <i class="fa fa-envelope" aria-hidden="true"></i>     
-          <%= f.label :패스워드 %>
-          </div>          
-          <%= f.password_field :password, class: "form-control", placeholder: "패스워드를 입력해주세요", autocomplete: "off" %>
+          <!--<div class="label">-->
+          <!--  <i class="fa fa-envelope" aria-hidden="true"></i>     -->
+          <!-- f.label :패스워드 -->
+          <!--</div>          -->
+          <%= f.password_field :password, class: "form-control", placeholder: "패스워드", autocomplete: "off" %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
@@ -29,6 +36,7 @@
             <%= f.label :이_계정_기억하기 %>
           </div>
         <% end -%>
+        
         <div class="loginbtnwrap">
           <div class="loginbtn">
           <%= f.submit "로그인" -%>
@@ -39,9 +47,8 @@
           <div class="loginbtn"><%= link_to "비밀번호 분실", new_password_path(resource_name) %>
           </div>
         </div>
-      <% end %>
-      
-    </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

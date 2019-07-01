@@ -1,0 +1,102 @@
+@import 'variables';
+
+.messagecontainerbody {
+  // background-color: beige;
+}
+
+
+#chat {
+   min-height: 380px;
+  }
+
+.messagecontainer {
+  width: 80%;
+  margin: 40px;
+  min-height: 500px;
+  
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+
+ .messagecontainerleft {
+   background-color: $lightgrey;
+   width: 100%;
+   height: 100%;
+   padding: 3%;
+   color: #153840;
+   
+   
+   .othername {
+     // font-size: 1.5rem ;
+     // line-height: 2rem;
+     
+     .othernameleft {
+      color: rosybrown;
+      
+     .title {  
+      border-right: solid 1px;
+      border-color: grey;
+      font-size: 15px ; //왜안되냐
+   line-height: 2rem;
+     
+     } 
+     
+    
+       
+     }
+     
+      .indexline {
+      font-size: 15px ; //왜안되냐
+       line-height: 2rem;
+     }
+    
+   }
+ }
+
+  
+  
+  .sendbar {
+   height: 120px;
+   background-color: bisque;
+   padding: 3%;
+  }
+  
+ .container {
+   padding: 3%;
+   background-color: white;
+ }  
+ .messagebody {
+  border-bottom: solid 1px;
+  border-color: $lightgrey;
+  
+ 
+  
+ .messageleft {
+   border-right: solid 1px;
+   border-color: $lightgrey;
+
+ .messagename {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: $logo-color;
+ }
+ 
+ 
+ 
+ }  
+  
+ 
+ .messagecontent {
+   font-size: 1.5rem;
+   padding: 5px;
+ }
+ 
+ .messagetime {
+   font-size: 1.2rem;
+   color: grey;
+   padding: 5px;
+ }
+ 
+ }
+ 
+}

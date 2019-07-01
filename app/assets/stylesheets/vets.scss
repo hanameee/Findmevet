@@ -26,10 +26,10 @@
 #postcodify_search_button {
     border: none;
     padding: 5px;
-    background: #F77272;
-    margin: 10px 0px 10px 0px;
-    color: #FFFFFF;
-    border-radius: 5px;
+    // background: #F77272;
+    // margin: 10px 0px 10px 0px;
+    // color: #FFFFFF;
+    // border-radius: 5px;
     &:hover {
       background:#D75252;
       transition:all 0.3s ease;
@@ -97,14 +97,23 @@
 
 //EDIT
 
-#vtitle {
-  margin: auto;
-  text-align: center;
-}
-.edit-pictureupload {
-  margin-left: 10%;
-}
+//homeadmin으로 옮김
 
-.edit-saving {
-  float: right;
-}
+// #vtitle {
+//   // margin: auto;
+//   // text-align: center;
+//   text-align: center;
+//     border-bottom: dotted 5px;
+//     border-top: dotted 5px;
+//     border-color: #153840;
+//     height: 100%;
+//     width: 40%;
+//     margin: auto;
+// }
+// .edit-pictureupload {
+//   margin-left: 10%;
+// }
+
+// .edit-saving {
+//   float: right;
+// }

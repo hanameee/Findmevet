@@ -18,11 +18,10 @@
 #indexleft {
   
   .searchbar {
-  height : 23%;  //120px;
-  background-color: #f65e5e;
+  height : 20%;  //120px;
+  background-color: blanchedalmond;
   padding: 4%;
   padding-top: 5%;
-
   
    #searchinput {
      padding-left: 0;
@@ -32,21 +31,24 @@
      }
      
      #q {
-       width: 400px;
+       width: 100%;
        height: 35px;
+       border: solid 3px;
+       border-color: #153840;
      }
-     
    } //col 없애기용 
    
    .searchinput {
     height: 40px; 
     margin: 0;
     float: left;
-   }
+    }
    
   .fa-search {
     font-size: 3rem;
     float: left;
+    color: #153840;
+    
     }
     
     .button {
@@ -55,12 +57,14 @@
     }
     
    .result {
-    font-size: 1.4rem;//14px;
-    font-weight: bold;
-    line-height: 40px;
+    font-size: 1.1rem;//14px;
+    font-weight: normal;
+    line-height: 30px;
+    color: #153840;
+;
  
      .resultnum {
-       color: #fac917;
+       color: rosybrown;
       }
    
  }
@@ -79,20 +83,20 @@
  
     li { 
      display: inline;
-     font-size: 1.2rem;//15px;
+     font-size: 1rem;//15px;
      line-height: 2.5rem;
      }
  
    
    .fa-angle-down {
-     font-size: 1.5rem; //20px
+     font-size: 1.2rem; //20px
      font-weight: bold;
      
      }
    }
 
   .hospitallist {
-    height : 70%; //400px;
+    height : 80%; //400px;
     display: block;
     background-color: white;
     overflow-y : scroll;
@@ -101,21 +105,21 @@
 
 //색깔지정용 //
   .hospital1 {
-    height : 45%; //160px;
+    height : 33.3%; //160px;
     display: block;
     margin : 0;
     display: block;
     overflow: hidden;
     }
     
-  .hospital1:nth-child(even) {background: white}
-  .hospital1:nth-child(odd) {background: $lightpink;}
+  .hospital1:nth-child(odd) {background: rgb(250,250,240)}
+  .hospital1:nth-child(even) {background: white;}
 
 
 //색깔지정용 끝//    
 
   .hospitalimg {
-    width: 35%;
+    width: 33%;
     height: 100%;
     padding: 1.7%;
     float: left;
@@ -136,41 +140,31 @@
   
   .hospitaltitlebar {
       // margin-top: 0%;//15px;
-      font-size: 2rem;//25px;
-      font-weight: bold;
+      // font-size: 2rem;//25px;
+      // font-weight: bold;
       height: 25%;
-      
-     .fa-map-marker {
-        font-size: 2.5rem;//30px;
-        color: $markerblue;
-        }
-        
-     .hospitaltitle {
-
-     
-     }    
-        
-     .score {
-        color: $staryellow;
-        font-size: 1.2rem; //15px;
-        }
-
-     .reviewcount {
-        font-size: 0.8rem; //10px;
-        }
-      
-      
-      }
-
-  .hospitalinfo {
-    
-     
-    .address {
-      font-size: 1.2rem;
       margin-bottom: 3%;
       padding-bottom: 2%;
       border-bottom: solid 1px;
       border-color: #ececec;
+
+   
+      a {
+        font-size: 1.7rem;
+        font-weight: normal;
+        line-height: 2.5rem;
+        }
+      }
+
+  .hospitalinfo {
+  
+    .telephone , .time {
+      color: #a9a9a9;
+      font-size: 0.9rem;
+    }
+     
+    .address {
+      font-size: 1rem;
     }
     
     .indexline {
@@ -202,10 +196,12 @@
   
   .indexmap {
   height : 100%;//560px;
-  
-  #map {
-    height: 550px;
-  }
+  width: 100%;
+  background-color: skyblue;
+ }
+ 
+ #map {
+   height: 100%;
  }
 }
 

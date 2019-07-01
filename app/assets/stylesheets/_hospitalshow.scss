@@ -2,89 +2,123 @@
 
 @import 'variables';
 
+
+// body 배경
+
+.showbody {
+  background-color: beige;
+}
+
+
+.shownamebar {
+  
+  font-weight: bold;
+  font-size: 1.2rem;
+  
+  
+ .showusername {
+      font-size: 1.4rem;
+      color: $logo-color;
+    }
+}
+
 // col 패딩 없애기용 설정
 #showleft, #showright {
-  height: 500px;
+  min-height: 250px;
   padding-left: 0;
   padding-right: 0;
+  background-color: white;
 }
 
 .showcontainer {
   width: 1100px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
 //**********carousel/head
 
 
 
+
+ .hospitaltitle {
+   
+   font-size: 2.5rem;
+    line-height: 4.5rem;
+    font-weight: normal;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    padding-top: 20px;
+    
+    .vettitle, {
+    text-align: center;
+    border-bottom: dotted 5px;
+    border-top: dotted 5px;
+    border-color: #153840;
+    height: 100%;
+    width: 40%;
+    margin: auto;
+    }
+      
+  
+   .score {
+      color: #fac917;
+      font-size: 1.8rem;//20px;
+      }
+
+
+  }
+
+
+
 //**********************showleft
 
+.heartbar {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    // display:flex;
+    // flex-direction:row;
+    // justify-content:center;
+    display: block;
+    text-align: center;
+    background-color: white;
+    padding: 1%;
+    
+    
+   .fa-heart, .fa-heart-o {
+     color: rosybrown;
+     font-size: 4rem;
+     cursor: pointer;
+    }
+  
+   .follownumber { //이거 더 예쁘게 바꾸고싶은데.. 하트밑에오게...
+     
+     font-size: 2rem;
+     color: grey;
+     
+    }
+   }
+
 #showleft {
-   overflow-y: scroll;
+//   overflow-y: scroll;
+
+  
 
   .showhospitaltext {
   min-height : 50%;//260px;
   background-color: white;;
   padding: 3%;
-  border-top: solid 1px;
-  border-color: $lightgrey;
+  padding-top: 5%;
+  // border-top: solid 1px;
+  // border-color: $lightgrey;
   
-  .hospitaltitle {
-      margin-bottom: 5%;//15px;
-      font-size: 2.5rem; //30px
-      font-weight: normal;
-      width: 100%;
-      height: 40px;
-    
-    .vettitle, .addreservation, .chatting {
-      float: left;
-    }
-      
-    .addreservation, .chatting {
-    color: grey;
-    font-size: 1.2rem;
-    text-align: center;
-    line-height: 2rem;
-    width: 40px;
-    height: 25px;
-    background-color: #f7f3e8;
-    border: solid 2px;
-    border-color: #fac917;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
-    }
 
-   .score {
-      color: #fac917;
-      font-size: 1.8rem;//20px;
-      }
-    
-   .fa-heart, .fa-heart-o {
-     color: $logo-color;
-     float: right;
-     font-size: 2rem;
-     margin: 6px;
-     cursor: pointer;
-   }
-  
-   .follownumber { //이거 더 예쁘게 바꾸고싶은데.. 하트밑에오게...
-     float: right;
-     font-size: 2rem;
-     color: grey;
-     
-   }
-  }
       
   .hospitalinfo {
     
      
-      
-      .infolist , .pricelist {
-      padding: 0;
-     }
      
       .address, .telephone, .homepage, .amenities, .moreinfo, .pricetitle, .price {
      font-size: 1rem;
@@ -98,6 +132,40 @@
         // }
       }
 
+     
+    }
+  }
+ 
+ 
+
+}
+
+
+      .infolist , .pricelist {
+      padding: 0;
+      width: 100%;
+     }
+ 
+ 
+  .showmap {
+  height: 250px;//480px;
+  background-color: skyblue;
+}    
+
+//***********************showright
+
+#showright {
+
+ .showhospitaltext {
+  min-height : 50%;//260px;
+  background-color: white;;
+  padding: 3%;
+  padding-top: 5%;
+  // border-top: solid 1px;
+  // border-color: $lightgrey;   
+ }
+ 
+     
       .pricelist {
     
       // .pricetitle {
@@ -105,31 +173,30 @@
       //   border-color: $lightgrey;
       // } 밑줄 안넣는게 낫나...
     
+    
        .price {
         text-align: right;
-   
-  }
+        line-height: 1.8rem;
+      height: 20px;//20px; 
+      text-align: center;
+      background-color: $lightpink;
+      border-radius: 10px;//10px;
+      }
+      
+      .etc {
+        border-left: dotted 1px;
+        padding-left: 10px;
+      }  
+     }
+    
  
 }
-    }
-  }
- 
-  .showmap {
-  height: 400px;//480px;
-  background-color: skyblue;
-}
-
-}
 
 
-//***********************showright
-
-#showright {
-
- .reviewfilters {
+.reviewfilters {
   //워 여기에 진짜 이상한 마진 1px정도 위아래로 붙어있는데 뭔지 모르겠다
     margin: 0;//10px;
-    padding: 1.5%;
+    padding: 0.5%;
     line-height: 2rem;
     height: 40px;//40px;
     // background-color : white;
@@ -180,10 +247,8 @@
     // background-image: url(dtbackground2.png);
     // overflow-y :hidden;
    
-    .deletebutton {
-      line-height: 1px;
-    }
     
+   
     
     .reviewniltext {
       font-size: 1.5rem;
@@ -213,7 +278,6 @@
   
     .showbriefing {
       font-size: 1.2rem;
-      float: left;
       }
   
     .fa-plus-circle {
@@ -224,8 +288,6 @@
       }
     }
   }
-}
-
 
 //*******************modal
 
@@ -234,11 +296,47 @@
 }
 
 
-.modal-content {
-  
-  .col-11 {
-    padding-left: 0;
-    margin-bottom: 10px;
-  }
+
+//*********************
+
+.practice {
+  max-width: 1200px;
+  margin:auto;
+    
+ .col-4 {    padding: 0;
+
+
+.showbutton , .showbuttonm{
+    padding-top: 3rem;
+    // border-radius: 5px;
+    text-align: center;
+    font-size: 2rem;
+    
+    // height: 50px;
+    height: 100px;
+    // transform: skewX(-10deg);
+    
 }
 
+
+.showbutton {
+    background-color: #153840;
+    color: bisque;
+    // -webkit-transform: skew(20deg);
+    // -moz-transform: skew(20deg);
+    // -o-transform: skew(20deg);
+   
+}
+
+.showbuttonm {
+ color: #153840;
+ background-color: bisque;   
+// -webkit-transform: skew(20deg);
+// -moz-transform: skew(20deg);
+// -o-transform: skew(20deg);
+
+    
+}
+}
+
+}

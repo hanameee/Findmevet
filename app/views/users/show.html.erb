@@ -4,11 +4,11 @@
       <div class="col-1">
         <% case current_user.reviews.count %>
         <% when 0 .. 5 %>
-          <%= image_tag("gomdol1", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("character01", class: "imgmypicheader", :alt => "first slide")  %>
         <% when 6 .. 10 %>
-          <%= image_tag("gomdol2", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("character02", class: "imgmypicheader", :alt => "first slide")  %>
         <% else %>
-          <%= image_tag("gomdol3", class: "imgmypicheader", :alt => "first slide")  %>
+          <%= image_tag("character03", class: "imgmypicheader", :alt => "first slide")  %>
         <% end %>
       </div>
       <div class="col-2" id="mypage_info"><!--수정버튼을 눌렀을 때 개인정보 수정 가능하게 하기-->
@@ -225,26 +225,8 @@
   </div>
 </div>
 
-
-<section class="sec-bottom">
-  <p class="sectitle">리뷰를 작성하여 테디의 꿈을 이뤄주세요!</p>
-  <div class="row mypage-section">
-    <div class="col-2 mypic">
-      <%= image_tag("gomdol1", class: "imgmypic1", :alt => "first slide")  %>
-      <p class="mypictext">1단계 아기테디</p>
-      <p class="mypictext">리뷰수 0~5개</p>
-    </div>
-    <div class="col-2 mypic">
-      <%= image_tag("gomdol2", class: "imgmypic2", :alt => "first slide")  %>
-      <p class="mypictext">2단계 학생테디</p>
-      <p class="mypictext">리뷰수 6~10개</p>
-    </div>
-    <div class="col-2 mypic">
-      <%= image_tag("gomdol3", class: "imgmypic3", :alt => "first slide")  %>
-      <p class="mypictext">3단계 닥터테디</p>
-      <p class="mypictext">리뷰수 11개 이상</p>
-    </div>
-  </div>
+<section class="sec-bottom2">
+  <%= image_tag("mypage_character", class: "mypage_character", :alt => "first slide")  %>
 </section>
 
 

@@ -1,8 +1,14 @@
-<div class="gnb">
+<div class="gnb main-gnb">
 <!-- .logo는 네비게이션 좌측 로고 구역 -->
-  <a href="/"><div class="logo"></div></a>
+<ul class="leftul">
+  <li><a href="#pagedown1"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+  <li><a href="#pagedown2">리뷰작성</a></li>
+  <li><a href="#pagedown3">예약</a></li>
+  <li><a href="#pagedown4">최근리뷰</a></li>    
+</ul>
+  <div class="logo"><a href="/"></a></div>
   <!-- ul은 네비게이션 우측 버튼들 구역 -->
-  <ul>
+  <ul class="rightul">
     <!-- 1)a onmouseout onmousemove 는 뭐지? 서로 다른 img를 링크했네?
     2) img name은 뭐지??-->
 <% if user_signed_in? %>
@@ -27,5 +33,4 @@
     <!--<form action="/hospitals/show">-->
     <!--  <input type="search" value="" placeholder="리뷰를 작성할 병원명을 입력해주세요 :D" />-->
     <!--</form>-->
-  </div>
 </div>

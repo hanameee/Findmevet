@@ -3,9 +3,7 @@
     <%= image_tag("level-up.png" , class:"level-up") %>
   
   <div class="reviewnilbox">
-   
-   
-
+  
     <div class="reviewniltext">
       <br>
     
@@ -30,26 +28,48 @@
 
  <div class="reviewbox">
        <div class= "row"> 
-        <div class="col-md-2">
+        <div class="col-md-1">
           <div class="circlediv"> 
             <% case User.find(r.user_id).reviews.count %>
             <% when 0 .. 5 %>
-              <%= image_tag("gomdol1", class: "imgmypicheader", :alt => "first slide")  %>
+              <%= image_tag("character01.png", class: "imgmypicheader", :alt => "first slide")  %>
              <% when 6 .. 10 %>
-              <%= image_tag("gomdol2", class: "imgmypicheader", :alt => "first slide")  %>
+              <%= image_tag("character02.png", class: "imgmypicheader", :alt => "first slide")  %>
             <% else %>
-              <%= image_tag("gomdol3", class: "imgmypicheader", :alt => "first slide")  %>
+              <%= image_tag("character03.png", class: "imgmypicheader", :alt => "first slide")  %>
             <% end %>
           </div>      
         </div>
-        <div class="col-md-10">
+        <div class="col-md-2 shownamebar">
+          <div class="showusername"><%= r.user.name %></div>  
+         
+           <div class="reviewdate"> <%= r.created_at.strftime("%v") %></div> 
+        </div>
+       
+        <div class="col-md-1">
+        <div class="indexline">
+         <div class="altericon">진료동물</div>
+         </div>
+         <div class="indexline">
+          <div class="altericon">한줄평</div>
+         </div> 
+       </div>  
+        
+        <div class="col-md-7">
+        <div class="indexline">
+          <div><%= r.reviewanimal %></div>
+          </div>
+          <div class="inexline">
+          <div><%= r.comment %></div>
+        </div> 
+       </div>        
+        
+        <div class="col-md-1">
          <p>
-           <span><%= r.user.name %></span>  
           
-           <span class="reviewdate"> <%= r.created_at.strftime("%v") %></span> 
            <a class="fa fa-plus-circle" aria-hidden="true" data-toggle="modal" data-target="#seemorereview-<%= r.id %>"></a>
            
-                            <div   class="modal fade" id="seemorereview-<%= r.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="seemorereview-<%= r.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                        <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -99,26 +119,27 @@
                                               </div> 
                                 <div class= "reviewtext">
                                  <div class="row">
-                                  <div class=" col-11 offset-1">
+                                  <div class="indexicontext">
                                   <div class= "reviewModalhead">
-                                                      <span><%= r.user.name%></span>
-                                  <span class="reviewdate">   
+                                                      <div><%= r.user.name%></div>
+                                  <div class="reviewdate">   
                             
-                             <span class="reviewdate"> <%= r.created_at.strftime("%v") %></span>
-                                   <span class="seestars">  
-                                    <span id="stars_<%= r.id %>"></span>
-                                    </span>
-                                  </span>
+                             <div class="reviewdate"> <%= r.created_at.strftime("%v") %></div>
+                                   <div class="seestars">  
+                                    <div id="stars_<%= r.id %>"></div>
+                                    </div>
+                                  </div>
                                   
                                 </div>
                                  </div>
                                  </div> 
+                                 <br>
                                 <div class= "reviewModalbody">
                                       
                                  <div class="indexline">
                                   <div class= "row">
-                                   <div class= "col-2 offset-1 indexicon">
-                                    <div class= "icon">한줄평</div>
+                                   <div class= "col-2 indexicon">
+                                    <div class= "altericon">한줄평</div>
                                    </div>
                                    <div class= "col-9 indexicontext">
                                     <div class= "briefing"><%= r.comment %></div>
@@ -128,8 +149,8 @@
                                   
                                  <div class="indexline">  
                                   <div class= "row">
-                                   <div class= "col-2 offset-1 indexicon">
-                                    <div class= "icon">진료동물</div>
+                                   <div class= "col-2 indexicon">
+                                    <div class= "altericon">진료동물</div>
                                    </div>
                                    <div class= "col-9 indexicontext">
                                     <div class= "reviewanimal"><%= r.reviewanimal %></div>
@@ -139,8 +160,8 @@
                                   
                                  <div class="indexline">  
                                    <div class= "row">
-                                   <div class= "col-2 offset-1 indexicon">
-                                    <div class= "icon">진료항목</div>
+                                   <div class= "col-2 indexicon">
+                                    <div class= "altericon">진료항목</div>
                                    </div>
                                    <div class= "col-9 indexicontext">
                                     <div class= "treatment"><%= r.treatment %></div>
@@ -150,8 +171,8 @@
                                  
                                  <div class="indexline">    
                                   <div class= "row">
-                                   <div class= "col-2 offset-1 indexicon">
-                                    <div class= "icon">자유리뷰</div>
+                                   <div class= "col-2 indexicon">
+                                    <div class= "altericon">자유리뷰</div>
                                    </div>
                                    <div class= "col-9 indexicontext">
                                     <div class= "reviewmore"><%= r.reviewmore %></div>
@@ -172,20 +193,18 @@
                                        </div>
                                        </div>
                                        </div>
-                                       
-                                       
-                                       
-                  
-                  
+                                      
     
          </p>
-         <div class="briefing showbriefing"><%= r.comment %></div>
+        
+
+       </div>
         <span class="pull-right deletebutton">
             <%= link_to "삭제", [@vet, r], method: :delete, data: {confirm: "정말 삭제하시겠습니까?"} if current_user && current_user == r.user %>
           </span>
         </div>
-       </div> <!-- reviewbox row 끝 -->
-      </div>
+ </div> <!-- reviewbox 끝 -->
+     
   
     
 

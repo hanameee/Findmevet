@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   
   def search
     @vets = Vet.ransack(vtitle_cont: params[:q]).result(distinct: true)
-    @vets = @vets.order(:vtitle).page(params[:page])
+    @vets = @vets.order(:vtitle).reverse_order.page(params[:page])
     @searchresult = params[:q]    
     respond_to do |format|
       format.html {}

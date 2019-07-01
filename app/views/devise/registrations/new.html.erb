@@ -1,72 +1,145 @@
+<div class="intro">
+  <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+  <div class="introslogan">
+    <p>회원가입</p>
+  </div>
+</div>
+
 <div class="form-wrap">
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3 text-center align-self-center">
       <div class="reg-form" id="navform">
-      <h2>회원가입</h2>
-          <div class="signup__character"><%= image_tag("login-teddy.png") %></div>
+      <h3>회원가입</h3>
+	     <%= image_tag("character03", class: "signup_character", :alt => "first slide")  %>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
         <div class="form-group">
           <div class="label">
-            <i class="fa fa-user" aria-hidden="true"></i> 
-            <%= f.label :이름 %>
+            <!--<i class="fa fa-user" aria-hidden="true"></i> -->
+           <div class="row">
+             <div class="col-2">
+                <%= f.label :이름 %>    
+             </div>
+          
+           <div class="col-10">
+              <%= f.text_field :name, class: "form-control", autofocus: true %>
+           </div>
+            </div>  
           </div>
-          <%= f.text_field :name, class: "form-control", placeholder: "이름을 입력해주세요", autofocus: true %>
+         
         </div>
 
         <div class="form-group">
           <div class="label">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-          <%= f.label :이메일 %>
+            <!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
+            <div class="row">
+              <div class="col-3">
+                <%= f.label :이메일 %>
+              </div>
+              <div class="col-9">
+                <%= f.email_field :email, class: "form-control", autofocus: true %>
+              </div>
+            </div>
+          
           </div>          
-          <%= f.email_field :email, class: "form-control", placeholder: "아이디로 사용할 이메일을 입력해주세요", autofocus: true %>
+          
         </div>
 
         <div class="form-group">
           <div class="label">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-          <%= f.label :패스워드 %>
-          <% if @minimum_password_length %>
+            <!--<i class="fa fa-lock" aria-hidden="true"></i>-->
+            <div class="row">
+              <div class="col-5">
+                <%= f.label :패스워드 %>
+                <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %>자 이상)</em>
           <% end %>
+              </div>
+              <div class="col-7">
+                 <%= f.password_field :password, class: "form-control",  autocomplete: "off" %>
+              </div>
+            </div>
+          
+          
           </div>
-          <%= f.password_field :password, class: "form-control", placeholder: "패스워드를 입력해주세요", autocomplete: "off" %>
+         
         </div>
 
         <div class="form-group">
           <div class="label">
-            <i class="fa fa-lock" aria-hidden="true"></i>      
-          <%= f.label :패스워드_확인 %>
+            <!--<i class="fa fa-lock" aria-hidden="true"></i>      -->
+            <div class="row">
+              <div class="col-4">
+                <%= f.label :패스워드_확인 %>       
+              </div>
+              <div class="col-8">
+               <%= f.password_field :password_confirmation, class: "form-control",  autocomplete: "off" %>
+              </div>
+            </div>
+         
           </div>
-          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "패스워드를 한 번 더 입력해주세요", autocomplete: "off" %>
-        </div>
+          </div>
 
-        <div class="form-group">
+        
           <div class="label">
-            <i class="fa fa-home" aria-hidden="true"></i>        
-            <%= f.label :주소 %>
+            <%= f.label :주소 %>   
+            <div class="form-group">
+             <div class="row">
+            <!--<i class="fa fa-home" aria-hidden="true"></i>        -->
+            <div class="col-10">
+              <span> <%= f.text_field :postcode, class: "form-control postcodify_postcode5", placeholder: "주소를 검색해주세요", autofocus: true, value: "" %>
+              </span>
+              <span>
+              <%= f.text_field :address, class: "form-control postcodify_address", autofocus: true, value: "" %>
+              </span>
+            </div>
+            <div class="col-2">   
+               <%= f.button "검색", id: "postcodify_search_button", type: "button" %>
+             
+            </div>
+          
+            </div>
+            </div>
+            
+            <div class="form-group">
+             
+              <%= f.text_field :address_detail, class: "form-control postcodify_details", placeholder: "상세주소를 입력해 주세요",autofocus: true, value: "" %>
+            </div>
           </div>            
-            <%= f.text_field :postcode, class: "form-control postcodify_postcode5", placeholder: "주소를 검색해주세요", autofocus: true, value: "" %>
-            <%= f.button "검색하기", id: "postcodify_search_button", type: "button" %>
-            <%= f.text_field :address, class: "form-control postcodify_address", autofocus: true, value: "" %>
-            <%= f.text_field :address_detail, class: "form-control postcodify_details", placeholder: "상세주소를 입력해 주세요",autofocus: true, value: "" %>
+           
+               
+
+        <div class="form-group">
+          <div class="label">
+            <!--<i class="fa fa-phone" aria-hidden="true"></i>        -->
+            <div class="row">
+              <div class="col-4">
+                  <%= f.label :휴대폰_번호 %>        
+              </div>
+              <div class="col-8">
+                  <%= f.text_field :phone_number, class: "form-control", placeholder: "휴대폰 번호", autofocus: true %>
+              </div>
+            </div>
+        
+          </div>
+        
         </div>
 
         <div class="form-group">
           <div class="label">
-            <i class="fa fa-phone" aria-hidden="true"></i>        
-          <%= f.label :휴대폰_번호 %>
+            <!--<i class="fa fa-birthday-cake" aria-hidden="true"></i>-->
+            <div class="row">
+              <div class="col-4">
+                <%= f.label :생년월일 %>
+              </div>
+              <div class="col-8">
+                <%= f.date_field :birth_date, class: "form-control", autofocus: true %>       
+              </div>
+            </div>
+          
           </div>
-          <%= f.text_field :phone_number, class: "form-control", placeholder: "휴대폰 번호를 입력해주세요", autofocus: true %>
-        </div>
-
-        <div class="form-group">
-          <div class="label">
-            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-          <%= f.label :생년월일 %>
-          </div>
-          <%= f.date_field :birth_date, class: "form-control", autofocus: true %>
+         
         </div>
         
         <%= f.radio_button(:role, "일반고객") %>

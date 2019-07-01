@@ -1,12 +1,15 @@
+<div class="intro">
+  <%= image_tag("intro0", class: "imgintro0", :alt => "first slide")  %>
+  <div class="introslogan">
+    <p>개인정보 수정하기</p>
+  </div>
+</div>
+
 <div class="form-wrap">
 	<div class="container">
 	  <div class="row">
 	    <div class="col-md-6 offset-md-3 text-center align-self-center reg-form" id="navform">
-        
-      <div class="user-edit-title">
-        <h2>개인정보 수정하기</h2>
-      </div>
-       <div class="signup__character"><%= image_tag("gomdol3.png") %></div>
+	     <%= image_tag("character03", class: "signup_character", :alt => "first slide")  %>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
